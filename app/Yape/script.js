@@ -1,12 +1,12 @@
 safari.self.addEventListener("message", handleMessage);
 
-const messageHandlers = {
-    "videos/get": getVideosRequestHandler,
-    "videos/highlight": toggleHighlightRequestHandler,
-    "videos/enable_pip": enablePiPRequestHandler
-}
-
 function handleMessage(event) {
+    const messageHandlers = {
+        "videos/get": getVideosRequestHandler,
+        "videos/highlight": toggleHighlightRequestHandler,
+        "videos/enable_pip": enablePiPRequestHandler
+    }
+    
     const uid = event.name
     const requestName = event.message["request_name"]
     const params = event.message["params"]
@@ -14,7 +14,11 @@ function handleMessage(event) {
     let handler = messageHandlers[requestName]
     if (handler != undefined) {
         handler(params, function(response) {
-            safari.extension.dispatchMessage(uid, response)
+            if (response == null) {
+                safari.extension.dispatchMessage(uid)
+            } else {
+                safari.extension.dispatchMessage(uid, response)
+            }
         })
     } else {
         safari.extension.dispatchMessage(uid)

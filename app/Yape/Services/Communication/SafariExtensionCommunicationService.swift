@@ -35,7 +35,11 @@ final class SafariExtensionCommunicationService: CommunicationServiceProtocol, E
                   responseContext: responseContext)
     }
     
-    private var queue: [CommunicationRequestProtocol.Identifier] = []
+    private var queue: [CommunicationRequestProtocol.Identifier] = [] {
+        didSet {
+            NSLog("QUEUE: \(self.queue)")
+        }
+    }
     private var requests: [CommunicationRequestProtocol.Identifier: CommunicationRequestProtocol] = [:]
     private var tokens: [CommunicationRequestProtocol.Identifier: Cancellable] = [:]
     private var completionHandlers: [CommunicationRequestProtocol.Identifier: Completion] = [:]
@@ -74,6 +78,7 @@ final class SafariExtensionCommunicationService: CommunicationServiceProtocol, E
     func pageChanged(to newPage: SFSafariPage) {
         self.processingContext.execute { [weak self] in
             self?.currentPage = newPage
+            self?.processQueue()
         }
     }
     
@@ -108,12 +113,16 @@ final class SafariExtensionCommunicationService: CommunicationServiceProtocol, E
                 let page = sSelf.currentPage,
                 let nextId = sSelf.queue.first,
                 let request = sSelf.requests[nextId] else { return }
+            NSLog("Processing \(nextId.rawValue)")
             sSelf.queue.removeFirst()
             var userInfo: [String: Any] = [.requestName: request.requestName]
             if let params = request.params {
                 userInfo[.params] = params
             }
-            page.dispatchMessageToScript(withName: request.uid.rawValue, userInfo: userInfo)
+            sSelf.responseContext.execute {
+                page.dispatchMessageToScript(withName: request.uid.rawValue, userInfo: userInfo)
+                NSLog("Message sent \(nextId.rawValue)")
+            }
             sSelf.processQueue()
         }
     }
@@ -121,6 +130,7 @@ final class SafariExtensionCommunicationService: CommunicationServiceProtocol, E
     private func removeRequest(withUID uid: CommunicationRequestProtocol.Identifier) {
         self.processingContext.execute { [weak self] in
             guard let sSelf = self else { return }
+            NSLog("Remove request \(uid)")
             sSelf.queue = sSelf.queue.filter({ $0 != uid })
             sSelf.requests.removeValue(forKey: uid)
             sSelf.tokens.removeValue(forKey: uid)

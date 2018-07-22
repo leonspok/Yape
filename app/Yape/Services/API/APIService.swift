@@ -9,6 +9,7 @@
 import Foundation
 
 protocol APIServiceProtocol {
+    @discardableResult
     func sendRequest<Endpoint>(toEndpoint endpoint: Endpoint, completion: @escaping (Result<Endpoint.ResponseType>) -> Void) -> Cancellable where Endpoint: APIEndpointProtocol
 }
 

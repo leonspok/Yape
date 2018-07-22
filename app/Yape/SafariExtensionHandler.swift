@@ -13,6 +13,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     private let apiService: APIServiceProtocol = ServicesContainer.shared.apiService
     
     override func messageReceived(withName messageName: String, from page: SFSafariPage, userInfo: [String : Any]?) {
+        NSLog("Message received \(messageName)")
         self.extensionCommunicator.pageChanged(to: page)
         self.extensionCommunicator.receivedMessage(name: messageName, userInfo: userInfo)
     }
@@ -36,9 +37,10 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         self.apiService.sendRequest(toEndpoint: endpoint) { (result) in
             switch result {
             case .success(let value):
-                let items = value.map({ (videoItem) -> [String: Any] in
-                    return videoItem.toDictionary()
-                })
+                let items = value.compactMap({ $0.toDictionary() })
+                if let item = value.first {
+                    self.apiService.sendRequest(toEndpoint: EnablePiPEndpoint(videoUID: item.uid), completion: { _ in })
+                }
                 NSLog("\(items)")
             case .failure(let error):
                 NSLog("\(error)")

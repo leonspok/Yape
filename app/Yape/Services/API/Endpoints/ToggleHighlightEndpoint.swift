@@ -14,7 +14,7 @@ final class ToggleHighlightEndpoint: APIEndpointProtocol {
     let params: [String: Any]?
     
     init(videoUID: VideoItem.Identifier, highlight: Bool) {
-        self.params = [.uid: videoUID, .highlight: highlight]
+        self.params = [.uid: videoUID.rawValue, .highlight: highlight]
     }
     
     func process(response: [String : Any]?) -> Result<Never?> {
