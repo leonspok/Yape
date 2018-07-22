@@ -8,42 +8,41 @@
 
 import SafariServices
 
-
-
 class SafariExtensionHandler: SFSafariExtensionHandler {
+    private let extensionCommunicator: ExtensionCommunicatorProtocol = ServicesContainer.shared.extensionCommunicator
+    private let apiService: APIServiceProtocol = ServicesContainer.shared.apiService
     
     override func messageReceived(withName messageName: String, from page: SFSafariPage, userInfo: [String : Any]?) {
-        // This method will be called when a content script provided by your extension calls safari.extension.dispatchMessage("message").
-        page.getPropertiesWithCompletionHandler { properties in
-            NSLog("The extension received a message (\(messageName)) from a script injected into (\(String(describing: properties?.url))) with userInfo (\(userInfo ?? [:]))")
-        }
+        self.extensionCommunicator.pageChanged(to: page)
+        self.extensionCommunicator.receivedMessage(name: messageName, userInfo: userInfo)
     }
     
     override func toolbarItemClicked(in window: SFSafariWindow) {
-        // This method will be called when your toolbar item is clicked.
-        NSLog("The extension's toolbar item was clicked")
+        self.extensionCommunicator.windowChanged(to: window)
     }
     
     override func validateToolbarItem(in window: SFSafariWindow, validationHandler: @escaping ((Bool, String) -> Void)) {
-        // This is called when Safari's state changed in some way that would require the extension's toolbar item to be validated again.
-        NSLog("Validation")
+        self.extensionCommunicator.windowChanged(to: window)
         validationHandler(true, "")
     }
     
     override func popoverViewController() -> SFSafariExtensionViewController {
-        NSLog("Will return popover")
         return SafariExtensionViewController.shared
     }
 
     override func popoverWillShow(in window: SFSafariWindow) {
-        NSLog("Will show popover")
-        window.getActiveTab { (tab) in
-            guard let tab = tab else { return }
-            tab.getActivePage(completionHandler: { (page) in
-                guard let page = page else { return }
-                page.dispatchMessageToScript(withName: "Test", userInfo: ["param": "value"])
-                NSLog("Sent message")
-            })
+        self.extensionCommunicator.windowChanged(to: window)
+        let endpoint = GetVideosEndpoint()
+        self.apiService.sendRequest(toEndpoint: endpoint) { (result) in
+            switch result {
+            case .success(let value):
+                let items = value.map({ (videoItem) -> [String: Any] in
+                    return videoItem.toDictionary()
+                })
+                NSLog("\(items)")
+            case .failure(let error):
+                NSLog("\(error)")
+            }
         }
     }
 }

@@ -36,7 +36,6 @@ final class GCDExecutionContext: ExecutionContextProtocol {
             assert(!Thread.isMainThread, "Synchrounous execution on main thread is not allowed")
             self.queue.sync(execute: workItem)
         }
-        self.queue.async(execute: workItem)
         return token
     }
     

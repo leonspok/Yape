@@ -8,7 +8,7 @@
 
 import SafariServices
 
-protocol ExtensionCommunicationProtocol {
+protocol ExtensionCommunicatorProtocol {
     func windowChanged(to newWindow: SFSafariWindow)
     func pageChanged(to newPage: SFSafariPage)
     func receivedMessage(name: String, userInfo: [String: Any]?)

@@ -8,7 +8,7 @@
 
 import SafariServices
 
-final class SafariExtensionCommunicationService: CommunicationServiceProtocol, ExtensionCommunicationProtocol {
+final class SafariExtensionCommunicationService: CommunicationServiceProtocol, ExtensionCommunicatorProtocol {
     
     private struct Constants {
         static let defaultTimeout: TimeInterval = 10
@@ -49,6 +49,7 @@ final class SafariExtensionCommunicationService: CommunicationServiceProtocol, E
             self?.removeRequest(withUID: request.uid)
         }
         
+        NSLog("Going to send request with uid: \(request.uid.rawValue)")
         token.processingToken = self.processingContext.execute { [weak self] in
             guard let sSelf = self else { return }
             sSelf.queue.append(request.uid)
@@ -56,7 +57,9 @@ final class SafariExtensionCommunicationService: CommunicationServiceProtocol, E
             sSelf.tokens[request.uid] = token
             sSelf.completionHandlers[request.uid] = completion
             
+            NSLog("Processed \(request.uid.rawValue)")
             sSelf.requestTimeoutContext.execute {
+                NSLog("Timeout! \(request.uid.rawValue)")
                 self?.finish(withError: CommunicationRequestError.requestTimeout, requestWithUID: request.uid)
             }
             
@@ -66,7 +69,7 @@ final class SafariExtensionCommunicationService: CommunicationServiceProtocol, E
         return token
     }
     
-    // MARK: - ExtensionCommunicationProtocol
+    // MARK: - ExtensionCommunicatorProtocol
     
     func pageChanged(to newPage: SFSafariPage) {
         self.processingContext.execute { [weak self] in
@@ -85,6 +88,7 @@ final class SafariExtensionCommunicationService: CommunicationServiceProtocol, E
     }
     
     func receivedMessage(name: String, userInfo: [String : Any]?) {
+        NSLog("Received message \(name)")
         let requestUID = CommunicationRequestProtocol.Identifier(rawValue: name)
         self.processingContext.execute { [weak self] in
             guard let sSelf = self,

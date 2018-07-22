@@ -22,7 +22,7 @@
 		E39175982104B7320075F5D8 /* PageMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39175972104B7320075F5D8 /* PageMessage.swift */; };
 		E391759A2104B8D10075F5D8 /* CommunicationServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39175992104B8D10075F5D8 /* CommunicationServiceProtocol.swift */; };
 		E391759D2104BBFB0075F5D8 /* Cancellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E391759C2104BBFB0075F5D8 /* Cancellable.swift */; };
-		E39175A02104BD9F0075F5D8 /* ExtensionCommunicationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E391759F2104BD9F0075F5D8 /* ExtensionCommunicationProtocol.swift */; };
+		E39175A02104BD9F0075F5D8 /* ExtensionCommunicatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E391759F2104BD9F0075F5D8 /* ExtensionCommunicatorProtocol.swift */; };
 		E39175A22104BE7F0075F5D8 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39175A12104BE7F0075F5D8 /* Result.swift */; };
 		E39175A42104C00F0075F5D8 /* ExecutionContextFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39175A32104C00F0075F5D8 /* ExecutionContextFactory.swift */; };
 		E39175A72104C2320075F5D8 /* ExecutionMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39175A62104C2320075F5D8 /* ExecutionMode.swift */; };
@@ -86,7 +86,7 @@
 		E39175972104B7320075F5D8 /* PageMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageMessage.swift; sourceTree = "<group>"; };
 		E39175992104B8D10075F5D8 /* CommunicationServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationServiceProtocol.swift; sourceTree = "<group>"; };
 		E391759C2104BBFB0075F5D8 /* Cancellable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cancellable.swift; sourceTree = "<group>"; };
-		E391759F2104BD9F0075F5D8 /* ExtensionCommunicationProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionCommunicationProtocol.swift; sourceTree = "<group>"; };
+		E391759F2104BD9F0075F5D8 /* ExtensionCommunicatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionCommunicatorProtocol.swift; sourceTree = "<group>"; };
 		E39175A12104BE7F0075F5D8 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		E39175A32104C00F0075F5D8 /* ExecutionContextFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExecutionContextFactory.swift; sourceTree = "<group>"; };
 		E39175A62104C2320075F5D8 /* ExecutionMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExecutionMode.swift; sourceTree = "<group>"; };
@@ -203,7 +203,7 @@
 			children = (
 				E39175B32104D64C0075F5D8 /* CommunicationRequestProtocol.swift */,
 				E39175992104B8D10075F5D8 /* CommunicationServiceProtocol.swift */,
-				E391759F2104BD9F0075F5D8 /* ExtensionCommunicationProtocol.swift */,
+				E391759F2104BD9F0075F5D8 /* ExtensionCommunicatorProtocol.swift */,
 				E39175AC2104C82F0075F5D8 /* SafariExtensionCommunicationService.swift */,
 			);
 			path = Communication;
@@ -386,7 +386,7 @@
 				E39175A22104BE7F0075F5D8 /* Result.swift in Sources */,
 				E391758B2103EF5C0075F5D8 /* ExtensionMessage.swift in Sources */,
 				E39175A42104C00F0075F5D8 /* ExecutionContextFactory.swift in Sources */,
-				E39175A02104BD9F0075F5D8 /* ExtensionCommunicationProtocol.swift in Sources */,
+				E39175A02104BD9F0075F5D8 /* ExtensionCommunicatorProtocol.swift in Sources */,
 				E39175AB2104C2630075F5D8 /* GCDExecutionContext.swift in Sources */,
 				E39175B22104D6180075F5D8 /* APIEndpointProtocol.swift in Sources */,
 				E39175AD2104C82F0075F5D8 /* SafariExtensionCommunicationService.swift in Sources */,

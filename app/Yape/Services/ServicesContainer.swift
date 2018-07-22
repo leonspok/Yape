@@ -13,14 +13,14 @@ final class ServicesContainer: AllServicesProvider {
     static let shared = ServicesContainer()
     
     let communicationService: CommunicationServiceProtocol
-    let extensionCommunicationService: ExtensionCommunicationProtocol
+    let extensionCommunicator: ExtensionCommunicatorProtocol
     let apiService: APIServiceProtocol
     
     init() {
         let safariCommunication = SafariExtensionCommunicationService()
         let apiService = APIService(communicationService: safariCommunication)
         self.communicationService = safariCommunication
-        self.extensionCommunicationService = safariCommunication
+        self.extensionCommunicator = safariCommunication
         self.apiService = apiService
     }
 }

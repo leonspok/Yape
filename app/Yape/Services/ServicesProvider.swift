@@ -10,15 +10,15 @@ import Foundation
 
 typealias AllServicesProvider =
     CommunicationServiceProvider &
-    ExtensionCommunicationServiceProvider &
+    ExtensionCommunicatorProvider &
     APIServiceProvider
 
 protocol CommunicationServiceProvider {
     var communicationService: CommunicationServiceProtocol { get }
 }
 
-protocol ExtensionCommunicationServiceProvider {
-    var extensionCommunicationService: ExtensionCommunicationProtocol { get }
+protocol ExtensionCommunicatorProvider {
+    var extensionCommunicator: ExtensionCommunicatorProtocol { get }
 }
 
 protocol APIServiceProvider {
