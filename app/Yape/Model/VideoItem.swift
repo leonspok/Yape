@@ -15,6 +15,18 @@ struct VideoItem {
     let isPlaying: Bool
 }
 
+extension VideoItem: Equatable {
+    static func ==(lhs: VideoItem, rhs: VideoItem) -> Bool {
+        return lhs.uid == rhs.uid
+    }
+}
+
+extension VideoItem: Hashable {
+    var hashValue: Int {
+        return self.uid.hashValue
+    }
+}
+
 extension VideoItem {
     init?(dictionary: [String: Any]) {
         guard let uidString = dictionary[.uid] as? String,
@@ -28,9 +40,10 @@ extension VideoItem {
     }
     
     func toDictionary() -> [String: Any] {
-        return [.uid: self.uid.rawValue,
-                .title: self.title,
-                .isPlaying: self.isPlaying]
+        var dictionary: [String: Any] = [.uid: self.uid.rawValue,
+                                         .title: self.title,
+                                         .isPlaying: self.isPlaying]
+        return dictionary
     }
 }
 

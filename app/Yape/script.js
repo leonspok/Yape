@@ -35,10 +35,10 @@ function getVideosRequestHandler(params, callback) {
         let item = {};
         item["uid"] = video.getAttribute("data-yape-uuid")
         item["is_playing"] = !video.paused
-        if (video.title != undefined) {
+        if (video.title != undefined && video.title.length > 0) {
             item["title"] = video.title
         } else {
-            item["title"] = "Video #" + i
+            item["title"] = "Video #" + (i + 1)
         }
         items.push(item)
     }
@@ -82,6 +82,9 @@ function getWebpageVideos() {
     const elements = document.getElementsByTagName("video")
     for (let i = 0; i < elements.length; i++) {
         const element = elements[i]
+        if (!element.webkitSupportsPresentationMode("picture-in-picture")) {
+            continue
+        }
         if (element.getAttribute("data-yape-uuid") == undefined) {
             element.setAttribute("data-yape-uuid", guid())
         }

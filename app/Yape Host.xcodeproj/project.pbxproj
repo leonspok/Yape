@@ -14,12 +14,9 @@
 		E342894F2103D4CF00BFD5CB /* script.js in Resources */ = {isa = PBXBuildFile; fileRef = E342894E2103D4CF00BFD5CB /* script.js */; };
 		E34289512103D4CF00BFD5CB /* ToolbarItemIcon.pdf in Resources */ = {isa = PBXBuildFile; fileRef = E34289502103D4CF00BFD5CB /* ToolbarItemIcon.pdf */; };
 		E34289552103D4CF00BFD5CB /* Yape.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E34289412103D4CF00BFD5CB /* Yape.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		E391758B2103EF5C0075F5D8 /* ExtensionMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E391758A2103EF5C0075F5D8 /* ExtensionMessage.swift */; };
 		E391758D2103F0390075F5D8 /* VideoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E391758C2103F0390075F5D8 /* VideoItem.swift */; };
 		E39175902103F1340075F5D8 /* GenericIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E391758F2103F1340075F5D8 /* GenericIdentifier.swift */; };
 		E39175942104B3CD0075F5D8 /* SFSafariWindow+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39175932104B3CD0075F5D8 /* SFSafariWindow+Extensions.swift */; };
-		E39175962104B3E40075F5D8 /* SFSafariPage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39175952104B3E40075F5D8 /* SFSafariPage+Extensions.swift */; };
-		E39175982104B7320075F5D8 /* PageMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39175972104B7320075F5D8 /* PageMessage.swift */; };
 		E391759A2104B8D10075F5D8 /* CommunicationServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39175992104B8D10075F5D8 /* CommunicationServiceProtocol.swift */; };
 		E391759D2104BBFB0075F5D8 /* Cancellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E391759C2104BBFB0075F5D8 /* Cancellable.swift */; };
 		E39175A02104BD9F0075F5D8 /* ExtensionCommunicatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E391759F2104BD9F0075F5D8 /* ExtensionCommunicatorProtocol.swift */; };
@@ -39,6 +36,14 @@
 		E39175BF2104DD0F0075F5D8 /* GetVideosEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39175BE2104DD0F0075F5D8 /* GetVideosEndpoint.swift */; };
 		E39175C12104DE140075F5D8 /* EnablePiPEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39175C02104DE140075F5D8 /* EnablePiPEndpoint.swift */; };
 		E39175C32104DED30075F5D8 /* ToggleHighlightEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39175C22104DED30075F5D8 /* ToggleHighlightEndpoint.swift */; };
+		E39175C721050C1A0075F5D8 /* VideoItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39175C621050C1A0075F5D8 /* VideoItemView.swift */; };
+		E39175CA210511C10075F5D8 /* VideoItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39175C9210511C10075F5D8 /* VideoItemViewModel.swift */; };
+		E39175CC2105147A0075F5D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E39175CB2105147A0075F5D8 /* Assets.xcassets */; };
+		E39175D0210520060075F5D8 /* VideoItemsListSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39175CF210520060075F5D8 /* VideoItemsListSection.swift */; };
+		E39175D22105201B0075F5D8 /* VideoItemsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39175D12105201B0075F5D8 /* VideoItemsListViewModel.swift */; };
+		E39175D4210521BB0075F5D8 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39175D3210521BB0075F5D8 /* Observable.swift */; };
+		E39175D8210531830075F5D8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E39175D7210531830075F5D8 /* Localizable.strings */; };
+		E39175DB210533410075F5D8 /* ReusableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39175DA210533410075F5D8 /* ReusableCell.swift */; };
 		E3C733962103D49F004D0FCC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C733952103D49F004D0FCC /* AppDelegate.swift */; };
 		E3C733982103D4A2004D0FCC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3C733972103D4A2004D0FCC /* Assets.xcassets */; };
 		E3C7339B2103D4A2004D0FCC /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3C733992103D4A2004D0FCC /* MainMenu.xib */; };
@@ -78,12 +83,9 @@
 		E342894E2103D4CF00BFD5CB /* script.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = script.js; sourceTree = "<group>"; };
 		E34289502103D4CF00BFD5CB /* ToolbarItemIcon.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ToolbarItemIcon.pdf; sourceTree = "<group>"; };
 		E34289522103D4CF00BFD5CB /* Yape.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Yape.entitlements; sourceTree = "<group>"; };
-		E391758A2103EF5C0075F5D8 /* ExtensionMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionMessage.swift; sourceTree = "<group>"; };
 		E391758C2103F0390075F5D8 /* VideoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoItem.swift; sourceTree = "<group>"; };
 		E391758F2103F1340075F5D8 /* GenericIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericIdentifier.swift; sourceTree = "<group>"; };
 		E39175932104B3CD0075F5D8 /* SFSafariWindow+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SFSafariWindow+Extensions.swift"; sourceTree = "<group>"; };
-		E39175952104B3E40075F5D8 /* SFSafariPage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SFSafariPage+Extensions.swift"; sourceTree = "<group>"; };
-		E39175972104B7320075F5D8 /* PageMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageMessage.swift; sourceTree = "<group>"; };
 		E39175992104B8D10075F5D8 /* CommunicationServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationServiceProtocol.swift; sourceTree = "<group>"; };
 		E391759C2104BBFB0075F5D8 /* Cancellable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cancellable.swift; sourceTree = "<group>"; };
 		E391759F2104BD9F0075F5D8 /* ExtensionCommunicatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionCommunicatorProtocol.swift; sourceTree = "<group>"; };
@@ -103,6 +105,14 @@
 		E39175BE2104DD0F0075F5D8 /* GetVideosEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetVideosEndpoint.swift; sourceTree = "<group>"; };
 		E39175C02104DE140075F5D8 /* EnablePiPEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnablePiPEndpoint.swift; sourceTree = "<group>"; };
 		E39175C22104DED30075F5D8 /* ToggleHighlightEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleHighlightEndpoint.swift; sourceTree = "<group>"; };
+		E39175C621050C1A0075F5D8 /* VideoItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoItemView.swift; sourceTree = "<group>"; };
+		E39175C9210511C10075F5D8 /* VideoItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoItemViewModel.swift; sourceTree = "<group>"; };
+		E39175CB2105147A0075F5D8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E39175CF210520060075F5D8 /* VideoItemsListSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoItemsListSection.swift; sourceTree = "<group>"; };
+		E39175D12105201B0075F5D8 /* VideoItemsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoItemsListViewModel.swift; sourceTree = "<group>"; };
+		E39175D3210521BB0075F5D8 /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		E39175D7210531830075F5D8 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		E39175DA210533410075F5D8 /* ReusableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableCell.swift; sourceTree = "<group>"; };
 		E3C733922103D49F004D0FCC /* Yape Host.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Yape Host.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3C733952103D49F004D0FCC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E3C733972103D4A2004D0FCC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -143,7 +153,9 @@
 			children = (
 				E391758E2103F1250075F5D8 /* Commons */,
 				E391759B2104BA0B0075F5D8 /* Services */,
+				E39175922104B3900075F5D8 /* SafariServices Extensions */,
 				E39175912103F25A0075F5D8 /* Model */,
+				E39175C421050BE80075F5D8 /* UI */,
 				E34289462103D4CF00BFD5CB /* SafariExtensionHandler.swift */,
 				E34289482103D4CF00BFD5CB /* SafariExtensionViewController.swift */,
 				E342894A2103D4CF00BFD5CB /* SafariExtensionViewController.xib */,
@@ -151,6 +163,8 @@
 				E342894E2103D4CF00BFD5CB /* script.js */,
 				E34289502103D4CF00BFD5CB /* ToolbarItemIcon.pdf */,
 				E34289522103D4CF00BFD5CB /* Yape.entitlements */,
+				E39175CB2105147A0075F5D8 /* Assets.xcassets */,
+				E39175D7210531830075F5D8 /* Localizable.strings */,
 			);
 			path = Yape;
 			sourceTree = "<group>";
@@ -158,11 +172,13 @@
 		E391758E2103F1250075F5D8 /* Commons */ = {
 			isa = PBXGroup;
 			children = (
+				E39175D92105332D0075F5D8 /* UI */,
+				E39175A52104C21D0075F5D8 /* Execution Context */,
+				E39175D3210521BB0075F5D8 /* Observable.swift */,
 				E391758F2103F1340075F5D8 /* GenericIdentifier.swift */,
 				E391759C2104BBFB0075F5D8 /* Cancellable.swift */,
 				E39175A12104BE7F0075F5D8 /* Result.swift */,
 				E39175AE2104CB520075F5D8 /* CommonTypes.swift */,
-				E39175A52104C21D0075F5D8 /* Execution Context */,
 			);
 			path = Commons;
 			sourceTree = "<group>";
@@ -170,10 +186,7 @@
 		E39175912103F25A0075F5D8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				E39175922104B3900075F5D8 /* SafariServices Extensions */,
 				E391758C2103F0390075F5D8 /* VideoItem.swift */,
-				E391758A2103EF5C0075F5D8 /* ExtensionMessage.swift */,
-				E39175972104B7320075F5D8 /* PageMessage.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -182,7 +195,6 @@
 			isa = PBXGroup;
 			children = (
 				E39175932104B3CD0075F5D8 /* SFSafariWindow+Extensions.swift */,
-				E39175952104B3E40075F5D8 /* SFSafariPage+Extensions.swift */,
 			);
 			path = "SafariServices Extensions";
 			sourceTree = "<group>";
@@ -239,6 +251,57 @@
 				E39175C22104DED30075F5D8 /* ToggleHighlightEndpoint.swift */,
 			);
 			path = Endpoints;
+			sourceTree = "<group>";
+		};
+		E39175C421050BE80075F5D8 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				E39175C821050E990075F5D8 /* View Models */,
+				E39175C521050BFF0075F5D8 /* Cells */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		E39175C521050BFF0075F5D8 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				E39175C621050C1A0075F5D8 /* VideoItemView.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		E39175C821050E990075F5D8 /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				E39175CE21051FCE0075F5D8 /* VideoItemsList */,
+				E39175CD21051FC80075F5D8 /* Cells */,
+			);
+			path = "View Models";
+			sourceTree = "<group>";
+		};
+		E39175CD21051FC80075F5D8 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				E39175C9210511C10075F5D8 /* VideoItemViewModel.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		E39175CE21051FCE0075F5D8 /* VideoItemsList */ = {
+			isa = PBXGroup;
+			children = (
+				E39175CF210520060075F5D8 /* VideoItemsListSection.swift */,
+				E39175D12105201B0075F5D8 /* VideoItemsListViewModel.swift */,
+			);
+			path = VideoItemsList;
+			sourceTree = "<group>";
+		};
+		E39175D92105332D0075F5D8 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				E39175DA210533410075F5D8 /* ReusableCell.swift */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 		E3C733892103D49F004D0FCC = {
@@ -353,8 +416,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E39175D8210531830075F5D8 /* Localizable.strings in Resources */,
 				E34289512103D4CF00BFD5CB /* ToolbarItemIcon.pdf in Resources */,
 				E342894C2103D4CF00BFD5CB /* SafariExtensionViewController.xib in Resources */,
+				E39175CC2105147A0075F5D8 /* Assets.xcassets in Resources */,
 				E342894F2103D4CF00BFD5CB /* script.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -375,7 +440,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E39175DB210533410075F5D8 /* ReusableCell.swift in Sources */,
 				E391759D2104BBFB0075F5D8 /* Cancellable.swift in Sources */,
+				E39175CA210511C10075F5D8 /* VideoItemViewModel.swift in Sources */,
 				E39175902103F1340075F5D8 /* GenericIdentifier.swift in Sources */,
 				E391758D2103F0390075F5D8 /* VideoItem.swift in Sources */,
 				E34289492103D4CF00BFD5CB /* SafariExtensionViewController.swift in Sources */,
@@ -384,9 +451,9 @@
 				E39175942104B3CD0075F5D8 /* SFSafariWindow+Extensions.swift in Sources */,
 				E39175B62104D7900075F5D8 /* APIService.swift in Sources */,
 				E39175A22104BE7F0075F5D8 /* Result.swift in Sources */,
-				E391758B2103EF5C0075F5D8 /* ExtensionMessage.swift in Sources */,
 				E39175A42104C00F0075F5D8 /* ExecutionContextFactory.swift in Sources */,
 				E39175A02104BD9F0075F5D8 /* ExtensionCommunicatorProtocol.swift in Sources */,
+				E39175D22105201B0075F5D8 /* VideoItemsListViewModel.swift in Sources */,
 				E39175AB2104C2630075F5D8 /* GCDExecutionContext.swift in Sources */,
 				E39175B22104D6180075F5D8 /* APIEndpointProtocol.swift in Sources */,
 				E39175AD2104C82F0075F5D8 /* SafariExtensionCommunicationService.swift in Sources */,
@@ -396,10 +463,11 @@
 				E39175A92104C24A0075F5D8 /* ExecutionContextProtocol.swift in Sources */,
 				E39175AF2104CB520075F5D8 /* CommonTypes.swift in Sources */,
 				E39175BA2104D9150075F5D8 /* ServicesContainer.swift in Sources */,
-				E39175982104B7320075F5D8 /* PageMessage.swift in Sources */,
+				E39175D0210520060075F5D8 /* VideoItemsListSection.swift in Sources */,
 				E39175C32104DED30075F5D8 /* ToggleHighlightEndpoint.swift in Sources */,
 				E39175BC2104DC400075F5D8 /* APIEndpointName.swift in Sources */,
-				E39175962104B3E40075F5D8 /* SFSafariPage+Extensions.swift in Sources */,
+				E39175D4210521BB0075F5D8 /* Observable.swift in Sources */,
+				E39175C721050C1A0075F5D8 /* VideoItemView.swift in Sources */,
 				E39175B82104D8590075F5D8 /* ServicesProvider.swift in Sources */,
 				E391759A2104B8D10075F5D8 /* CommunicationServiceProtocol.swift in Sources */,
 			);

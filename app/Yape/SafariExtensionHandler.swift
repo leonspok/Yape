@@ -33,19 +33,9 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
 
     override func popoverWillShow(in window: SFSafariWindow) {
         self.extensionCommunicator.windowChanged(to: window)
-        let endpoint = GetVideosEndpoint()
-        self.apiService.sendRequest(toEndpoint: endpoint) { (result) in
-            switch result {
-            case .success(let value):
-                let items = value.compactMap({ $0.toDictionary() })
-                if let item = value.first {
-                    self.apiService.sendRequest(toEndpoint: EnablePiPEndpoint(videoUID: item.uid), completion: { _ in })
-                }
-                NSLog("\(items)")
-            case .failure(let error):
-                NSLog("\(error)")
-            }
-        }
+        let viewModel = VideoItemsListViewModel()
+        viewModel.reload()
+        SafariExtensionViewController.shared.viewModel = viewModel
     }
 }
 
