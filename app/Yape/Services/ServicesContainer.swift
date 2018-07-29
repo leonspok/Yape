@@ -12,15 +12,26 @@ final class ServicesContainer: AllServicesProvider {
     
     static let shared = ServicesContainer()
     
-    let communicationService: CommunicationServiceProtocol
-    let extensionCommunicator: ExtensionCommunicatorProtocol
-    let apiService: APIServiceProtocol
+    let extensionContextObserver: ExtensionContextObserverProtocol
+    let extensionMessagesProcessor: ExtensionMessagesProcessorProtocol
+    let extensionMessagesReceiver: ExtensionMessagesReceiverProtocol
+    let commandsDispatcher: CommandsDispatcherProtocol
+    
+    #if DEBUG
+    let anyMessageObserver: ExtensionMessagesReceiverProtocol.OpaqueObserver
+    #endif
     
     init() {
-        let safariCommunication = SafariExtensionCommunicationService()
-        let apiService = APIService(communicationService: safariCommunication)
-        self.communicationService = safariCommunication
-        self.extensionCommunicator = safariCommunication
-        self.apiService = apiService
+        let commandsDispatcher = SafariExtensionCommandsDispatcher()
+        let messagingService = SafariExtensionMessagingService()
+        #if DEBUG
+        self.anyMessageObserver = messagingService.subscribe(to: AnyMessage.self, onMessageReceived: { (message) in
+            debugLog("Received message with info: \(String(describing: message.asDictionary()))")
+        })
+        #endif
+        self.extensionContextObserver = commandsDispatcher
+        self.commandsDispatcher = commandsDispatcher
+        self.extensionMessagesProcessor = messagingService
+        self.extensionMessagesReceiver = messagingService
     }
 }

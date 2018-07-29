@@ -9,9 +9,12 @@
 import Foundation
 
 protocol VideoItemsListViewModelProtocol {
+    var zeroCaseViewModel: VideoItemsListZeroCaseViewModelProtocol { get }
+    
     var sections: Observable<[VideoItemsListSectionProtocol]> { get }
     func itemViewModel(at indexPath: IndexPath) -> VideoItemViewModelProtocol?
     func reload()
+    func reset()
     
     var numberOfSections: Int { get }
     func numberOfItems(inSection section: Int) -> Int
@@ -21,14 +24,24 @@ protocol VideoItemsListViewModelProtocol {
 final class VideoItemsListViewModel: VideoItemsListViewModelProtocol {
     typealias Dependencies =
         VideoItemViewModel.Dependencies &
-        APIServiceProvider
+        CommandsDispatcherProvider &
+        ExtensionMessagesReceiverProvider
     
     private let dependencies: Dependencies
-    
+    private var messagesObserver: ExtensionMessagesReceiverProtocol.OpaqueObserver?
+
+    private(set) lazy var zeroCaseViewModel: VideoItemsListZeroCaseViewModelProtocol = {
+        return VideoItemsListZeroCaseViewModel(onButtonPressed: { [weak self] in
+            self?.reload()
+        })
+    }()
     let sections: Observable<[VideoItemsListSectionProtocol]> = Observable<[VideoItemsListSectionProtocol]>([])
     
     init(dependencies: Dependencies = ServicesContainer.shared) {
         self.dependencies = dependencies
+        self.messagesObserver = self.dependencies.extensionMessagesReceiver.subscribe(to: VideosListMessage.self, onMessageReceived: { [weak self] (message) in
+            self?.handle(message: message)
+        })
     }
     
     func itemViewModel(at indexPath: IndexPath) -> VideoItemViewModelProtocol? {
@@ -38,35 +51,46 @@ final class VideoItemsListViewModel: VideoItemsListViewModelProtocol {
     }
     
     func reload() {
-        let endpoint = GetVideosEndpoint()
-        self.dependencies.apiService.sendRequest(toEndpoint: endpoint) { [weak self] (result) in
-            guard let sSelf = self else { return }
-            switch result {
-            case .success(let items):
-                sSelf.sections.value = sSelf.makeSections(from: items)
-            case .failure(let error):
-                NSLog("\(error)")
+        let command: ExtensionCommand = .exportVideos
+        self.dependencies.commandsDispatcher.send(command: command)
+    }
+    
+    func reset() {
+        for section in self.sections.value {
+            for item in section.items {
+                item.didFinishHover()
             }
         }
     }
     
-    private func makeSections(from items: [VideoItem]) -> [VideoItemsListSectionProtocol] {
-        var sections: [VideoItemsListSectionProtocol] = []
-        let nowPlayingItems = items.filter({ $0.isPlaying })
-        if !nowPlayingItems.isEmpty {
-            let section = VideoItemsListSection(title: NSLocalizedString("video.items.list.section.nowplaying.title", comment: "Now playing"),
-                                                items: nowPlayingItems.map({
-                                                    VideoItemViewModel(videoItem: $0, dependencies: self.dependencies)
-                                                }))
-            sections.append(section)
-        }
+    private func handle(message: VideosListMessage) {
+        let sectionTitle: String = {
+            if let host = URL(string: message.documentInfo.location)?.host {
+                if let title = message.documentInfo.title, title.count > 0 {
+                    return "[\(host)] " + title
+                }
+                return "[\(host)]"
+            } else {
+                let location = message.documentInfo.location
+                let truncated = location.prefix(min(location.count, 30))
+                return "[\(truncated)]"
+            }
+        }()
         
-        let section = VideoItemsListSection(title: NSLocalizedString("video.items.list.section.all.title", comment: "All"),
-                                            items: items.map({
+        var sections = self.sections.value
+        let section = VideoItemsListSection(title: sectionTitle,
+                                            items: message.messageInfo.items.map({
                                                 VideoItemViewModel(videoItem: $0, dependencies: self.dependencies)
                                             }))
-        sections.append(section)
-        return sections
+        guard !section.items.isEmpty else { return }
+        
+        if let existingSectionIndex = sections.index(where: { $0.title == sectionTitle }) {
+            sections.remove(at: existingSectionIndex)
+            sections.insert(section, at: existingSectionIndex)
+        } else {
+            sections.append(section)
+        }
+        self.sections.value = sections
     }
     
     var numberOfSections: Int {

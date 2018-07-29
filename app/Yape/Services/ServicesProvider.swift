@@ -9,18 +9,23 @@
 import Foundation
 
 typealias AllServicesProvider =
-    CommunicationServiceProvider &
-    ExtensionCommunicatorProvider &
-    APIServiceProvider
+    ExtensionContextObserverProvider &
+    ExtensionMessagesProcessorProvider &
+    ExtensionMessagesReceiverProvider &
+    CommandsDispatcherProvider
 
-protocol CommunicationServiceProvider {
-    var communicationService: CommunicationServiceProtocol { get }
+protocol ExtensionContextObserverProvider {
+    var extensionContextObserver: ExtensionContextObserverProtocol { get }
 }
 
-protocol ExtensionCommunicatorProvider {
-    var extensionCommunicator: ExtensionCommunicatorProtocol { get }
+protocol ExtensionMessagesProcessorProvider {
+    var extensionMessagesProcessor: ExtensionMessagesProcessorProtocol { get }
 }
 
-protocol APIServiceProvider {
-    var apiService: APIServiceProtocol { get }
+protocol ExtensionMessagesReceiverProvider {
+    var extensionMessagesReceiver: ExtensionMessagesReceiverProtocol { get }
+}
+
+protocol CommandsDispatcherProvider {
+    var commandsDispatcher: CommandsDispatcherProtocol { get }
 }

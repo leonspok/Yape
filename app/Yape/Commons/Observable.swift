@@ -23,7 +23,7 @@ final class ObserveToken<T> {
 }
 
 final class Observable<T> {
-    private class WeakHolder<T> {
+    private final class WeakHolder<T> {
         fileprivate weak var observer: ObserveToken<T>? = nil
         
         init(_ observer: ObserveToken<T>) {

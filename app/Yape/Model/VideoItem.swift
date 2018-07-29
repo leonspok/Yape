@@ -27,7 +27,7 @@ extension VideoItem: Hashable {
     }
 }
 
-extension VideoItem {
+extension VideoItem: DictionaryRepresentable {
     init?(dictionary: [String: Any]) {
         guard let uidString = dictionary[.uid] as? String,
             let title = dictionary[.title] as? String,
@@ -39,8 +39,8 @@ extension VideoItem {
         self.isPlaying = isPlaying
     }
     
-    func toDictionary() -> [String: Any] {
-        var dictionary: [String: Any] = [.uid: self.uid.rawValue,
+    func asDictionary() -> [String: Any] {
+        let dictionary: [String: Any] = [.uid: self.uid.rawValue,
                                          .title: self.title,
                                          .isPlaying: self.isPlaying]
         return dictionary

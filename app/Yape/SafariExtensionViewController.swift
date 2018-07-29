@@ -13,12 +13,17 @@ final class SafariExtensionViewController: SFSafariExtensionViewController, NSCo
     private struct Constants {
         static let listWidth: CGFloat = 250
         static let maxListHeight: CGFloat = 500
-        static let cellHeight: CGFloat = 50
+        static let sectionHeaderHeight: CGFloat = 20
+        static let cellHeight: CGFloat = 30
+
+        static let zeroCaseViewVerticalMargin: CGFloat = 20
     }
-    
     
     @IBOutlet weak var scrollView: NSScrollView!
     @IBOutlet weak var collectionView: NSCollectionView!
+    @IBOutlet weak var zeroCaseView: NSView!
+    @IBOutlet weak var zeroCaseLabel: NSTextField!
+    @IBOutlet weak var reloadButton: NSButton!
     
     var viewModel: VideoItemsListViewModelProtocol? {
         didSet {
@@ -37,8 +42,14 @@ final class SafariExtensionViewController: SFSafariExtensionViewController, NSCo
         self.collectionView.backgroundColors = [.clear]
         
         VideoItemView.registerCell(in: self.collectionView)
+        VideoItemsListSectionHeaderView.registerSupplementaryView(in: self.collectionView)
         self.preferredContentSize = NSSize(width: Constants.listWidth,
                                            height: Constants.cellHeight)
+    }
+    
+    override func viewDidDisappear() {
+        super.viewDidDisappear()
+        self.viewModel?.reset()
     }
     
     private func applyViewModel() {
@@ -47,6 +58,8 @@ final class SafariExtensionViewController: SFSafariExtensionViewController, NSCo
                                                height: Constants.cellHeight)
             return
         }
+        self.zeroCaseLabel.stringValue = viewModel.zeroCaseViewModel.text
+        self.reloadButton.title = viewModel.zeroCaseViewModel.buttonTitle
         self.viewModelObserver = viewModel.sections.observeNew({ [weak self] _ in
             self?.updateData()
         })
@@ -54,12 +67,20 @@ final class SafariExtensionViewController: SFSafariExtensionViewController, NSCo
     }
     
     private func updateData() {
-        let totalHeight: CGFloat = self.viewModel?.sections.value.reduce(0, { (sum, section) -> CGFloat in
-            return sum + CGFloat(section.items.count) * Constants.cellHeight
-        }) ?? 0
-        let height = max(Constants.cellHeight, min(totalHeight, Constants.maxListHeight))
-        self.preferredContentSize = NSSize(width: Constants.listWidth,
-                                           height: height)
+        if let viewModel = self.viewModel, !viewModel.sections.value.isEmpty {
+            let totalHeight: CGFloat = self.viewModel?.sections.value.reduce(0, { (sum, section) -> CGFloat in
+                return sum + Constants.sectionHeaderHeight + CGFloat(section.items.count) * Constants.cellHeight
+            }) ?? 0
+            let height = max(Constants.cellHeight, min(totalHeight, Constants.maxListHeight))
+            self.preferredContentSize = NSSize(width: Constants.listWidth,
+                                               height: height)
+            self.zeroCaseView.isHidden = true
+        } else {
+            let height = self.zeroCaseView.bounds.size.height + Constants.zeroCaseViewVerticalMargin * 2
+            self.preferredContentSize = NSSize(width: Constants.listWidth,
+                                               height: height)
+            self.zeroCaseView.isHidden = false
+        }
         self.collectionView.reloadData()
     }
     
@@ -87,6 +108,20 @@ final class SafariExtensionViewController: SFSafariExtensionViewController, NSCo
         return cell
     }
     
+    func collectionView(_ collectionView: NSCollectionView, viewForSupplementaryElementOfKind kind: NSCollectionView.SupplementaryElementKind, at indexPath: IndexPath) -> NSView {
+        guard kind == .sectionHeader,
+            let view = VideoItemsListSectionHeaderView.dequeueSupplementaryView(in: collectionView, at: indexPath) else {
+            return NSView()
+        }
+        guard let viewModel = self.viewModel,
+            indexPath.section > 0,
+            indexPath.section < viewModel.sections.value.count else {
+            return view
+        }
+        view.viewModel = viewModel.sections.value[indexPath.section]
+        return view
+    }
+    
     // MARK: - NSCollectionViewDelegate
     
     func collectionView(_ collectionView: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
@@ -97,6 +132,15 @@ final class SafariExtensionViewController: SFSafariExtensionViewController, NSCo
     func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> NSSize {
         let size = NSSize(width: collectionView.bounds.size.width, height: Constants.cellHeight)
         return size
+    }
+    
+    func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> NSSize {
+        let size = NSSize(width: collectionView.bounds.size.width, height: Constants.sectionHeaderHeight)
+        return size
+    }
+    
+    @IBAction func reloadButtonPressed(_ sender: Any) {
+        self.viewModel?.zeroCaseViewModel.buttonPressed()
     }
 }
 

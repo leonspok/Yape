@@ -40,6 +40,7 @@ final class VideoItemView: NSCollectionViewItem, ReusableView {
         textField.isEditable = false
         textField.isSelectable = false
         textField.font = NSFont.labelFont(ofSize: 14.0)
+        textField.textColor = .labelColor
         textField.backgroundColor = .clear
         textField.isBordered = false
         textField.maximumNumberOfLines = 1

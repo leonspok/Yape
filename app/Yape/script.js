@@ -2,32 +2,37 @@ safari.self.addEventListener("message", handleMessage);
 
 function handleMessage(event) {
     const messageHandlers = {
-        "videos/get": getVideosRequestHandler,
-        "videos/highlight": toggleHighlightRequestHandler,
-        "videos/enable_pip": enablePiPRequestHandler
+        "export_videos": getVideosRequestHandler,
+        "toggle_highlight": toggleHighlightRequestHandler,
+        "enable_pip": enablePiPRequestHandler
     }
     
-    const uid = event.name
-    const requestName = event.message["request_name"]
-    const params = event.message["params"]
+    const messageName = event.name
+    const params = event.message
     
-    let handler = messageHandlers[requestName]
+    let handler = messageHandlers[messageName]
     if (handler != undefined) {
-        handler(params, function(response) {
-            if (response == null) {
-                safari.extension.dispatchMessage(uid)
-            } else {
-                safari.extension.dispatchMessage(uid, response)
-            }
-        })
-    } else {
-        safari.extension.dispatchMessage(uid)
+        handler(params)
     }
+}
+
+function sendMessage(name, message) {
+    var messageObject = {}
+    messageObject.document = {
+        "location": document.URL
+    }
+    if (document.title != undefined, document.title.length > 0) {
+        messageObject.document.title = document.title
+    }
+    if (message != undefined) {
+        messageObject.message = message
+    }
+    safari.extension.dispatchMessage(name, messageObject)
 }
 
 // MARK: - Request Handlers -
 
-function getVideosRequestHandler(params, callback) {
+function getVideosRequestHandler(params) {
     const videos = getWebpageVideos()
     let items = []
     for (let i = 0; i < videos.length; i++) {
@@ -42,10 +47,13 @@ function getVideosRequestHandler(params, callback) {
         }
         items.push(item)
     }
-    callback({ "videos": items })
+    let info = {
+        "videos": items
+    }
+    sendMessage("videos_list", info)
 }
 
-function toggleHighlightRequestHandler(params, callback) {
+function toggleHighlightRequestHandler(params) {
     const video = getVideo(params["uid"])
     if (video != null) {
         if (params["highlight"]) {
@@ -54,15 +62,13 @@ function toggleHighlightRequestHandler(params, callback) {
             removeHightlight(video)
         }
     }
-    callback(null)
 }
 
-function enablePiPRequestHandler(params, callback) {
+function enablePiPRequestHandler(params) {
     const video = getVideo(params["uid"])
     if (video != null) {
         enablePiP(video)
     }
-    callback(null)
 }
 
 // MARK: - Page Actions -
@@ -82,7 +88,7 @@ function getWebpageVideos() {
     const elements = document.getElementsByTagName("video")
     for (let i = 0; i < elements.length; i++) {
         const element = elements[i]
-        if (!element.webkitSupportsPresentationMode("picture-in-picture")) {
+        if (element.webkitSupportsPresentationMode == undefined || !element.webkitSupportsPresentationMode("picture-in-picture")) {
             continue
         }
         if (element.getAttribute("data-yape-uuid") == undefined) {
@@ -97,6 +103,7 @@ function enablePiP(video) {
 }
 
 function highlightElement(element) {
+    const document = element.ownerDocument
     const rect = element.getBoundingClientRect()
     const bodyRect = document.body.getBoundingClientRect()
     let overlay = document.createElement("div")
@@ -112,8 +119,11 @@ function highlightElement(element) {
 }
 
 function removeHightlight(element) {
+    const document = element.ownerDocument
     const overlay = document.getElementById("yape-overlay")
-    overlay.parentElement.removeChild(overlay)
+    if (overlay.parentElement != undefined) {
+        overlay.parentElement.removeChild(overlay)
+    }
 }
 
 // MARK: - Helpers -

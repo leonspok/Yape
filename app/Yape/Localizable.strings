@@ -6,4 +6,6 @@
   Copyright © 2018 Igor Savelev. All rights reserved.
 */
 
-"video.items.list.section.nowplaying.title" = "Now playing";
+"video.items.list.zero.case.label.text" = "No videos found";
+"video.items.list.zero.case.button.title" = "Reload";
+

@@ -57,4 +57,8 @@ extension ReusableSupplementaryView {
     static func registerSupplementaryView(in collectionView: NSCollectionView) {
         collectionView.register(self, forSupplementaryViewOfKind: self.supplementaryElementKind, withIdentifier: self.reusableIdentifier)
     }
+    
+    static func dequeueSupplementaryView(in collectionView: NSCollectionView, at indexPath: IndexPath) -> Self? {
+        return collectionView.makeSupplementaryView(ofKind: self.supplementaryElementKind, withIdentifier: self.reusableIdentifier, for: indexPath) as? Self
+    }
 }

@@ -16,26 +16,16 @@
 		E34289552103D4CF00BFD5CB /* Yape.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E34289412103D4CF00BFD5CB /* Yape.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E391758D2103F0390075F5D8 /* VideoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E391758C2103F0390075F5D8 /* VideoItem.swift */; };
 		E39175902103F1340075F5D8 /* GenericIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E391758F2103F1340075F5D8 /* GenericIdentifier.swift */; };
-		E39175942104B3CD0075F5D8 /* SFSafariWindow+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39175932104B3CD0075F5D8 /* SFSafariWindow+Extensions.swift */; };
-		E391759A2104B8D10075F5D8 /* CommunicationServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39175992104B8D10075F5D8 /* CommunicationServiceProtocol.swift */; };
 		E391759D2104BBFB0075F5D8 /* Cancellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E391759C2104BBFB0075F5D8 /* Cancellable.swift */; };
-		E39175A02104BD9F0075F5D8 /* ExtensionCommunicatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E391759F2104BD9F0075F5D8 /* ExtensionCommunicatorProtocol.swift */; };
 		E39175A22104BE7F0075F5D8 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39175A12104BE7F0075F5D8 /* Result.swift */; };
 		E39175A42104C00F0075F5D8 /* ExecutionContextFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39175A32104C00F0075F5D8 /* ExecutionContextFactory.swift */; };
 		E39175A72104C2320075F5D8 /* ExecutionMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39175A62104C2320075F5D8 /* ExecutionMode.swift */; };
 		E39175A92104C24A0075F5D8 /* ExecutionContextProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39175A82104C24A0075F5D8 /* ExecutionContextProtocol.swift */; };
 		E39175AB2104C2630075F5D8 /* GCDExecutionContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39175AA2104C2630075F5D8 /* GCDExecutionContext.swift */; };
-		E39175AD2104C82F0075F5D8 /* SafariExtensionCommunicationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39175AC2104C82F0075F5D8 /* SafariExtensionCommunicationService.swift */; };
+		E39175AD2104C82F0075F5D8 /* SafariExtensionMessagingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39175AC2104C82F0075F5D8 /* SafariExtensionMessagingService.swift */; };
 		E39175AF2104CB520075F5D8 /* CommonTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39175AE2104CB520075F5D8 /* CommonTypes.swift */; };
-		E39175B22104D6180075F5D8 /* APIEndpointProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39175B12104D6180075F5D8 /* APIEndpointProtocol.swift */; };
-		E39175B42104D64C0075F5D8 /* CommunicationRequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39175B32104D64C0075F5D8 /* CommunicationRequestProtocol.swift */; };
-		E39175B62104D7900075F5D8 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39175B52104D7900075F5D8 /* APIService.swift */; };
 		E39175B82104D8590075F5D8 /* ServicesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39175B72104D8590075F5D8 /* ServicesProvider.swift */; };
 		E39175BA2104D9150075F5D8 /* ServicesContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39175B92104D9150075F5D8 /* ServicesContainer.swift */; };
-		E39175BC2104DC400075F5D8 /* APIEndpointName.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39175BB2104DC400075F5D8 /* APIEndpointName.swift */; };
-		E39175BF2104DD0F0075F5D8 /* GetVideosEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39175BE2104DD0F0075F5D8 /* GetVideosEndpoint.swift */; };
-		E39175C12104DE140075F5D8 /* EnablePiPEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39175C02104DE140075F5D8 /* EnablePiPEndpoint.swift */; };
-		E39175C32104DED30075F5D8 /* ToggleHighlightEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39175C22104DED30075F5D8 /* ToggleHighlightEndpoint.swift */; };
 		E39175C721050C1A0075F5D8 /* VideoItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39175C621050C1A0075F5D8 /* VideoItemView.swift */; };
 		E39175CA210511C10075F5D8 /* VideoItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39175C9210511C10075F5D8 /* VideoItemViewModel.swift */; };
 		E39175CC2105147A0075F5D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E39175CB2105147A0075F5D8 /* Assets.xcassets */; };
@@ -43,7 +33,26 @@
 		E39175D22105201B0075F5D8 /* VideoItemsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39175D12105201B0075F5D8 /* VideoItemsListViewModel.swift */; };
 		E39175D4210521BB0075F5D8 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39175D3210521BB0075F5D8 /* Observable.swift */; };
 		E39175D8210531830075F5D8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E39175D7210531830075F5D8 /* Localizable.strings */; };
-		E39175DB210533410075F5D8 /* ReusableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39175DA210533410075F5D8 /* ReusableCell.swift */; };
+		E39175DB210533410075F5D8 /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39175DA210533410075F5D8 /* ReusableView.swift */; };
+		E3917613210D05280075F5D8 /* SFSafariWindow+ActivePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3917612210D05280075F5D8 /* SFSafariWindow+ActivePage.swift */; };
+		E391761B210D11120075F5D8 /* ExtensionContextObserverProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E391761A210D11120075F5D8 /* ExtensionContextObserverProtocol.swift */; };
+		E391761D210D11350075F5D8 /* ExtensionMessagesProcessorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E391761C210D11350075F5D8 /* ExtensionMessagesProcessorProtocol.swift */; };
+		E391761F210D115E0075F5D8 /* CommandsDispatcherProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E391761E210D115E0075F5D8 /* CommandsDispatcherProtocol.swift */; };
+		E3917621210D117E0075F5D8 /* ExtensionCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3917620210D117E0075F5D8 /* ExtensionCommand.swift */; };
+		E3917623210D12560075F5D8 /* ExtensionMessagesReceiverProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3917622210D12560075F5D8 /* ExtensionMessagesReceiverProtocol.swift */; };
+		E3917627210D13E50075F5D8 /* ExtensionMessageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3917626210D13E50075F5D8 /* ExtensionMessageType.swift */; };
+		E391762C210D16B50075F5D8 /* DocumentMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E391762B210D16B50075F5D8 /* DocumentMessage.swift */; };
+		E391762E210D203A0075F5D8 /* DocumentInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E391762D210D203A0075F5D8 /* DocumentInfo.swift */; };
+		E3917630210DE1320075F5D8 /* DictionaryRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E391762F210DE1320075F5D8 /* DictionaryRepresentable.swift */; };
+		E3917632210DE3AA0075F5D8 /* ExtensionMessageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3917631210DE3AA0075F5D8 /* ExtensionMessageProtocol.swift */; };
+		E3917634210DE3BB0075F5D8 /* ExtensionMessageInfoProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3917633210DE3BB0075F5D8 /* ExtensionMessageInfoProtocol.swift */; };
+		E3917636210DE6E10075F5D8 /* VideosListMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3917635210DE6E10075F5D8 /* VideosListMessage.swift */; };
+		E3917638210DE7790075F5D8 /* AnyMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3917637210DE7790075F5D8 /* AnyMessage.swift */; };
+		E391763A210E06C70075F5D8 /* SafariExtensionCommandsDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3917639210E06C70075F5D8 /* SafariExtensionCommandsDispatcher.swift */; };
+		E391763C210E095C0075F5D8 /* ExtensionConcreteMessageName.swift in Sources */ = {isa = PBXBuildFile; fileRef = E391763B210E095C0075F5D8 /* ExtensionConcreteMessageName.swift */; };
+		E391763E210E0A280075F5D8 /* DebugLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = E391763D210E0A280075F5D8 /* DebugLog.swift */; };
+		E3917642210E323D0075F5D8 /* VideoItemsListSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3917641210E323D0075F5D8 /* VideoItemsListSectionHeaderView.swift */; };
+		E3917644210E353C0075F5D8 /* VideoItemsListZeroCaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3917643210E353C0075F5D8 /* VideoItemsListZeroCaseViewModel.swift */; };
 		E3C733962103D49F004D0FCC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C733952103D49F004D0FCC /* AppDelegate.swift */; };
 		E3C733982103D4A2004D0FCC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3C733972103D4A2004D0FCC /* Assets.xcassets */; };
 		E3C7339B2103D4A2004D0FCC /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3C733992103D4A2004D0FCC /* MainMenu.xib */; };
@@ -85,26 +94,16 @@
 		E34289522103D4CF00BFD5CB /* Yape.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Yape.entitlements; sourceTree = "<group>"; };
 		E391758C2103F0390075F5D8 /* VideoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoItem.swift; sourceTree = "<group>"; };
 		E391758F2103F1340075F5D8 /* GenericIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericIdentifier.swift; sourceTree = "<group>"; };
-		E39175932104B3CD0075F5D8 /* SFSafariWindow+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SFSafariWindow+Extensions.swift"; sourceTree = "<group>"; };
-		E39175992104B8D10075F5D8 /* CommunicationServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationServiceProtocol.swift; sourceTree = "<group>"; };
 		E391759C2104BBFB0075F5D8 /* Cancellable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cancellable.swift; sourceTree = "<group>"; };
-		E391759F2104BD9F0075F5D8 /* ExtensionCommunicatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionCommunicatorProtocol.swift; sourceTree = "<group>"; };
 		E39175A12104BE7F0075F5D8 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		E39175A32104C00F0075F5D8 /* ExecutionContextFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExecutionContextFactory.swift; sourceTree = "<group>"; };
 		E39175A62104C2320075F5D8 /* ExecutionMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExecutionMode.swift; sourceTree = "<group>"; };
 		E39175A82104C24A0075F5D8 /* ExecutionContextProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExecutionContextProtocol.swift; sourceTree = "<group>"; };
 		E39175AA2104C2630075F5D8 /* GCDExecutionContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCDExecutionContext.swift; sourceTree = "<group>"; };
-		E39175AC2104C82F0075F5D8 /* SafariExtensionCommunicationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariExtensionCommunicationService.swift; sourceTree = "<group>"; };
+		E39175AC2104C82F0075F5D8 /* SafariExtensionMessagingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariExtensionMessagingService.swift; sourceTree = "<group>"; };
 		E39175AE2104CB520075F5D8 /* CommonTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonTypes.swift; sourceTree = "<group>"; };
-		E39175B12104D6180075F5D8 /* APIEndpointProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpointProtocol.swift; sourceTree = "<group>"; };
-		E39175B32104D64C0075F5D8 /* CommunicationRequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationRequestProtocol.swift; sourceTree = "<group>"; };
-		E39175B52104D7900075F5D8 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		E39175B72104D8590075F5D8 /* ServicesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesProvider.swift; sourceTree = "<group>"; };
 		E39175B92104D9150075F5D8 /* ServicesContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesContainer.swift; sourceTree = "<group>"; };
-		E39175BB2104DC400075F5D8 /* APIEndpointName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpointName.swift; sourceTree = "<group>"; };
-		E39175BE2104DD0F0075F5D8 /* GetVideosEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetVideosEndpoint.swift; sourceTree = "<group>"; };
-		E39175C02104DE140075F5D8 /* EnablePiPEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnablePiPEndpoint.swift; sourceTree = "<group>"; };
-		E39175C22104DED30075F5D8 /* ToggleHighlightEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleHighlightEndpoint.swift; sourceTree = "<group>"; };
 		E39175C621050C1A0075F5D8 /* VideoItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoItemView.swift; sourceTree = "<group>"; };
 		E39175C9210511C10075F5D8 /* VideoItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoItemViewModel.swift; sourceTree = "<group>"; };
 		E39175CB2105147A0075F5D8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -112,7 +111,26 @@
 		E39175D12105201B0075F5D8 /* VideoItemsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoItemsListViewModel.swift; sourceTree = "<group>"; };
 		E39175D3210521BB0075F5D8 /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		E39175D7210531830075F5D8 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
-		E39175DA210533410075F5D8 /* ReusableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableCell.swift; sourceTree = "<group>"; };
+		E39175DA210533410075F5D8 /* ReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
+		E3917612210D05280075F5D8 /* SFSafariWindow+ActivePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SFSafariWindow+ActivePage.swift"; sourceTree = "<group>"; };
+		E391761A210D11120075F5D8 /* ExtensionContextObserverProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionContextObserverProtocol.swift; sourceTree = "<group>"; };
+		E391761C210D11350075F5D8 /* ExtensionMessagesProcessorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionMessagesProcessorProtocol.swift; sourceTree = "<group>"; };
+		E391761E210D115E0075F5D8 /* CommandsDispatcherProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandsDispatcherProtocol.swift; sourceTree = "<group>"; };
+		E3917620210D117E0075F5D8 /* ExtensionCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionCommand.swift; sourceTree = "<group>"; };
+		E3917622210D12560075F5D8 /* ExtensionMessagesReceiverProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionMessagesReceiverProtocol.swift; sourceTree = "<group>"; };
+		E3917626210D13E50075F5D8 /* ExtensionMessageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionMessageType.swift; sourceTree = "<group>"; };
+		E391762B210D16B50075F5D8 /* DocumentMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentMessage.swift; sourceTree = "<group>"; };
+		E391762D210D203A0075F5D8 /* DocumentInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentInfo.swift; sourceTree = "<group>"; };
+		E391762F210DE1320075F5D8 /* DictionaryRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryRepresentable.swift; sourceTree = "<group>"; };
+		E3917631210DE3AA0075F5D8 /* ExtensionMessageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionMessageProtocol.swift; sourceTree = "<group>"; };
+		E3917633210DE3BB0075F5D8 /* ExtensionMessageInfoProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionMessageInfoProtocol.swift; sourceTree = "<group>"; };
+		E3917635210DE6E10075F5D8 /* VideosListMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideosListMessage.swift; sourceTree = "<group>"; };
+		E3917637210DE7790075F5D8 /* AnyMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyMessage.swift; sourceTree = "<group>"; };
+		E3917639210E06C70075F5D8 /* SafariExtensionCommandsDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariExtensionCommandsDispatcher.swift; sourceTree = "<group>"; };
+		E391763B210E095C0075F5D8 /* ExtensionConcreteMessageName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionConcreteMessageName.swift; sourceTree = "<group>"; };
+		E391763D210E0A280075F5D8 /* DebugLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugLog.swift; sourceTree = "<group>"; };
+		E3917641210E323D0075F5D8 /* VideoItemsListSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoItemsListSectionHeaderView.swift; sourceTree = "<group>"; };
+		E3917643210E353C0075F5D8 /* VideoItemsListZeroCaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoItemsListZeroCaseViewModel.swift; sourceTree = "<group>"; };
 		E3C733922103D49F004D0FCC /* Yape Host.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Yape Host.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3C733952103D49F004D0FCC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E3C733972103D4A2004D0FCC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -153,9 +171,9 @@
 			children = (
 				E391758E2103F1250075F5D8 /* Commons */,
 				E391759B2104BA0B0075F5D8 /* Services */,
-				E39175922104B3900075F5D8 /* SafariServices Extensions */,
 				E39175912103F25A0075F5D8 /* Model */,
 				E39175C421050BE80075F5D8 /* UI */,
+				E3917612210D05280075F5D8 /* SFSafariWindow+ActivePage.swift */,
 				E34289462103D4CF00BFD5CB /* SafariExtensionHandler.swift */,
 				E34289482103D4CF00BFD5CB /* SafariExtensionViewController.swift */,
 				E342894A2103D4CF00BFD5CB /* SafariExtensionViewController.xib */,
@@ -179,6 +197,8 @@
 				E391759C2104BBFB0075F5D8 /* Cancellable.swift */,
 				E39175A12104BE7F0075F5D8 /* Result.swift */,
 				E39175AE2104CB520075F5D8 /* CommonTypes.swift */,
+				E391762F210DE1320075F5D8 /* DictionaryRepresentable.swift */,
+				E391763D210E0A280075F5D8 /* DebugLog.swift */,
 			);
 			path = Commons;
 			sourceTree = "<group>";
@@ -191,21 +211,12 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		E39175922104B3900075F5D8 /* SafariServices Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				E39175932104B3CD0075F5D8 /* SFSafariWindow+Extensions.swift */,
-			);
-			path = "SafariServices Extensions";
-			sourceTree = "<group>";
-		};
 		E391759B2104BA0B0075F5D8 /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				E39175B72104D8590075F5D8 /* ServicesProvider.swift */,
 				E39175B92104D9150075F5D8 /* ServicesContainer.swift */,
 				E391759E2104BD8B0075F5D8 /* Communication */,
-				E39175B02104D5510075F5D8 /* API */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -213,10 +224,10 @@
 		E391759E2104BD8B0075F5D8 /* Communication */ = {
 			isa = PBXGroup;
 			children = (
-				E39175B32104D64C0075F5D8 /* CommunicationRequestProtocol.swift */,
-				E39175992104B8D10075F5D8 /* CommunicationServiceProtocol.swift */,
-				E391759F2104BD9F0075F5D8 /* ExtensionCommunicatorProtocol.swift */,
-				E39175AC2104C82F0075F5D8 /* SafariExtensionCommunicationService.swift */,
+				E3917628210D13F60075F5D8 /* Models */,
+				E3917624210D13840075F5D8 /* Protocols */,
+				E39175AC2104C82F0075F5D8 /* SafariExtensionMessagingService.swift */,
+				E3917639210E06C70075F5D8 /* SafariExtensionCommandsDispatcher.swift */,
 			);
 			path = Communication;
 			sourceTree = "<group>";
@@ -232,32 +243,11 @@
 			path = "Execution Context";
 			sourceTree = "<group>";
 		};
-		E39175B02104D5510075F5D8 /* API */ = {
-			isa = PBXGroup;
-			children = (
-				E39175BB2104DC400075F5D8 /* APIEndpointName.swift */,
-				E39175B12104D6180075F5D8 /* APIEndpointProtocol.swift */,
-				E39175B52104D7900075F5D8 /* APIService.swift */,
-				E39175BD2104DCF90075F5D8 /* Endpoints */,
-			);
-			path = API;
-			sourceTree = "<group>";
-		};
-		E39175BD2104DCF90075F5D8 /* Endpoints */ = {
-			isa = PBXGroup;
-			children = (
-				E39175BE2104DD0F0075F5D8 /* GetVideosEndpoint.swift */,
-				E39175C02104DE140075F5D8 /* EnablePiPEndpoint.swift */,
-				E39175C22104DED30075F5D8 /* ToggleHighlightEndpoint.swift */,
-			);
-			path = Endpoints;
-			sourceTree = "<group>";
-		};
 		E39175C421050BE80075F5D8 /* UI */ = {
 			isa = PBXGroup;
 			children = (
 				E39175C821050E990075F5D8 /* View Models */,
-				E39175C521050BFF0075F5D8 /* Cells */,
+				E391763F210E32070075F5D8 /* Components */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -292,6 +282,7 @@
 			children = (
 				E39175CF210520060075F5D8 /* VideoItemsListSection.swift */,
 				E39175D12105201B0075F5D8 /* VideoItemsListViewModel.swift */,
+				E3917643210E353C0075F5D8 /* VideoItemsListZeroCaseViewModel.swift */,
 			);
 			path = VideoItemsList;
 			sourceTree = "<group>";
@@ -299,9 +290,53 @@
 		E39175D92105332D0075F5D8 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				E39175DA210533410075F5D8 /* ReusableCell.swift */,
+				E39175DA210533410075F5D8 /* ReusableView.swift */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		E3917624210D13840075F5D8 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				E3917631210DE3AA0075F5D8 /* ExtensionMessageProtocol.swift */,
+				E3917633210DE3BB0075F5D8 /* ExtensionMessageInfoProtocol.swift */,
+				E391761A210D11120075F5D8 /* ExtensionContextObserverProtocol.swift */,
+				E391761C210D11350075F5D8 /* ExtensionMessagesProcessorProtocol.swift */,
+				E3917622210D12560075F5D8 /* ExtensionMessagesReceiverProtocol.swift */,
+				E391761E210D115E0075F5D8 /* CommandsDispatcherProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		E3917628210D13F60075F5D8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E3917620210D117E0075F5D8 /* ExtensionCommand.swift */,
+				E3917626210D13E50075F5D8 /* ExtensionMessageType.swift */,
+				E391763B210E095C0075F5D8 /* ExtensionConcreteMessageName.swift */,
+				E391762D210D203A0075F5D8 /* DocumentInfo.swift */,
+				E3917637210DE7790075F5D8 /* AnyMessage.swift */,
+				E391762B210D16B50075F5D8 /* DocumentMessage.swift */,
+				E3917635210DE6E10075F5D8 /* VideosListMessage.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E391763F210E32070075F5D8 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				E3917640210E32200075F5D8 /* Headers */,
+				E39175C521050BFF0075F5D8 /* Cells */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		E3917640210E32200075F5D8 /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				E3917641210E323D0075F5D8 /* VideoItemsListSectionHeaderView.swift */,
+			);
+			path = Headers;
 			sourceTree = "<group>";
 		};
 		E3C733892103D49F004D0FCC = {
@@ -440,36 +475,45 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E39175DB210533410075F5D8 /* ReusableCell.swift in Sources */,
+				E39175DB210533410075F5D8 /* ReusableView.swift in Sources */,
+				E3917627210D13E50075F5D8 /* ExtensionMessageType.swift in Sources */,
+				E3917642210E323D0075F5D8 /* VideoItemsListSectionHeaderView.swift in Sources */,
+				E3917630210DE1320075F5D8 /* DictionaryRepresentable.swift in Sources */,
 				E391759D2104BBFB0075F5D8 /* Cancellable.swift in Sources */,
+				E3917621210D117E0075F5D8 /* ExtensionCommand.swift in Sources */,
 				E39175CA210511C10075F5D8 /* VideoItemViewModel.swift in Sources */,
+				E391763E210E0A280075F5D8 /* DebugLog.swift in Sources */,
 				E39175902103F1340075F5D8 /* GenericIdentifier.swift in Sources */,
 				E391758D2103F0390075F5D8 /* VideoItem.swift in Sources */,
+				E3917623210D12560075F5D8 /* ExtensionMessagesReceiverProtocol.swift in Sources */,
 				E34289492103D4CF00BFD5CB /* SafariExtensionViewController.swift in Sources */,
 				E34289472103D4CF00BFD5CB /* SafariExtensionHandler.swift in Sources */,
+				E391761F210D115E0075F5D8 /* CommandsDispatcherProtocol.swift in Sources */,
+				E3917644210E353C0075F5D8 /* VideoItemsListZeroCaseViewModel.swift in Sources */,
+				E391761D210D11350075F5D8 /* ExtensionMessagesProcessorProtocol.swift in Sources */,
 				E39175A72104C2320075F5D8 /* ExecutionMode.swift in Sources */,
-				E39175942104B3CD0075F5D8 /* SFSafariWindow+Extensions.swift in Sources */,
-				E39175B62104D7900075F5D8 /* APIService.swift in Sources */,
 				E39175A22104BE7F0075F5D8 /* Result.swift in Sources */,
+				E391762C210D16B50075F5D8 /* DocumentMessage.swift in Sources */,
 				E39175A42104C00F0075F5D8 /* ExecutionContextFactory.swift in Sources */,
-				E39175A02104BD9F0075F5D8 /* ExtensionCommunicatorProtocol.swift in Sources */,
 				E39175D22105201B0075F5D8 /* VideoItemsListViewModel.swift in Sources */,
+				E3917632210DE3AA0075F5D8 /* ExtensionMessageProtocol.swift in Sources */,
+				E3917638210DE7790075F5D8 /* AnyMessage.swift in Sources */,
+				E391763A210E06C70075F5D8 /* SafariExtensionCommandsDispatcher.swift in Sources */,
+				E391762E210D203A0075F5D8 /* DocumentInfo.swift in Sources */,
+				E391761B210D11120075F5D8 /* ExtensionContextObserverProtocol.swift in Sources */,
+				E3917613210D05280075F5D8 /* SFSafariWindow+ActivePage.swift in Sources */,
 				E39175AB2104C2630075F5D8 /* GCDExecutionContext.swift in Sources */,
-				E39175B22104D6180075F5D8 /* APIEndpointProtocol.swift in Sources */,
-				E39175AD2104C82F0075F5D8 /* SafariExtensionCommunicationService.swift in Sources */,
-				E39175C12104DE140075F5D8 /* EnablePiPEndpoint.swift in Sources */,
-				E39175BF2104DD0F0075F5D8 /* GetVideosEndpoint.swift in Sources */,
-				E39175B42104D64C0075F5D8 /* CommunicationRequestProtocol.swift in Sources */,
+				E39175AD2104C82F0075F5D8 /* SafariExtensionMessagingService.swift in Sources */,
+				E3917634210DE3BB0075F5D8 /* ExtensionMessageInfoProtocol.swift in Sources */,
+				E391763C210E095C0075F5D8 /* ExtensionConcreteMessageName.swift in Sources */,
+				E3917636210DE6E10075F5D8 /* VideosListMessage.swift in Sources */,
 				E39175A92104C24A0075F5D8 /* ExecutionContextProtocol.swift in Sources */,
 				E39175AF2104CB520075F5D8 /* CommonTypes.swift in Sources */,
 				E39175BA2104D9150075F5D8 /* ServicesContainer.swift in Sources */,
 				E39175D0210520060075F5D8 /* VideoItemsListSection.swift in Sources */,
-				E39175C32104DED30075F5D8 /* ToggleHighlightEndpoint.swift in Sources */,
-				E39175BC2104DC400075F5D8 /* APIEndpointName.swift in Sources */,
 				E39175D4210521BB0075F5D8 /* Observable.swift in Sources */,
 				E39175C721050C1A0075F5D8 /* VideoItemView.swift in Sources */,
 				E39175B82104D8590075F5D8 /* ServicesProvider.swift in Sources */,
-				E391759A2104B8D10075F5D8 /* CommunicationServiceProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

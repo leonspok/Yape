@@ -17,7 +17,7 @@ protocol VideoItemViewModelProtocol {
 }
 
 final class VideoItemViewModel: VideoItemViewModelProtocol {
-    typealias Dependencies = APIServiceProvider
+    typealias Dependencies = CommandsDispatcherProvider
     
     private let dependencies: Dependencies
     private let videoItem: VideoItem
@@ -31,26 +31,18 @@ final class VideoItemViewModel: VideoItemViewModelProtocol {
         self.title = videoItem.title
     }
     
-    private var hoverToken: Cancellable?
-    
     func didStartHover() {
-        if let token = self.hoverToken {
-            token.cancel()
-        }
-        let endpoint = ToggleHighlightEndpoint(videoUID: self.videoItem.uid, highlight: true)
-        self.hoverToken = self.dependencies.apiService.sendRequest(toEndpoint: endpoint, completion: { _ in })
+        let command: ExtensionCommand = .toggleHighlight(videoId: self.videoItem.uid, highlight: true)
+        self.dependencies.commandsDispatcher.send(command: command)
     }
     
     func didFinishHover() {
-        if let token = self.hoverToken {
-            token.cancel()
-        }
-        let endpoint = ToggleHighlightEndpoint(videoUID: self.videoItem.uid, highlight: false)
-        self.hoverToken = self.dependencies.apiService.sendRequest(toEndpoint: endpoint, completion: { _ in })
+        let command: ExtensionCommand = .toggleHighlight(videoId: self.videoItem.uid, highlight: false)
+        self.dependencies.commandsDispatcher.send(command: command)
     }
     
     func didSelect() {
-        let endpoint = EnablePiPEndpoint(videoUID: self.videoItem.uid)
-        self.dependencies.apiService.sendRequest(toEndpoint: endpoint, completion: { _ in })
+        let command: ExtensionCommand = .enablePiP(videoId: self.videoItem.uid)
+        self.dependencies.commandsDispatcher.send(command: command)
     }
 }
