@@ -8,10 +8,11 @@
 
 import Foundation
 
-protocol VideoItemsListViewModelProtocol {
+protocol VideoItemsListViewModelProtocol: class {
     var zeroCaseViewModel: VideoItemsListZeroCaseViewModelProtocol { get }
     
-    var sections: Observable<[VideoItemsListSectionProtocol]> { get }
+    var onUpdate: VoidClosure? { get set }
+    func sectionViewModel(inSection section: Int) -> VideoItemsListSectionViewModelProtocol?
     func itemViewModel(at indexPath: IndexPath) -> VideoItemViewModelProtocol?
     func reload()
     func reset()
@@ -30,12 +31,11 @@ final class VideoItemsListViewModel: VideoItemsListViewModelProtocol {
     private let dependencies: Dependencies
     private var messagesObserver: ExtensionMessagesReceiverProtocol.OpaqueObserver?
 
-    private(set) lazy var zeroCaseViewModel: VideoItemsListZeroCaseViewModelProtocol = {
-        return VideoItemsListZeroCaseViewModel(onButtonPressed: { [weak self] in
-            self?.reload()
-        })
-    }()
-    let sections: Observable<[VideoItemsListSectionProtocol]> = Observable<[VideoItemsListSectionProtocol]>([])
+    private var collections: [VideoItemsCollection] = [] {
+        didSet {
+            self.onUpdate?()
+        }
+    }
     
     init(dependencies: Dependencies = ServicesContainer.shared) {
         self.dependencies = dependencies
@@ -44,66 +44,66 @@ final class VideoItemsListViewModel: VideoItemsListViewModelProtocol {
         })
     }
     
+    // MARK: - VideoItemsListViewModelProtocol
+
+    var onUpdate: VoidClosure?
+    
+    private(set) lazy var zeroCaseViewModel: VideoItemsListZeroCaseViewModelProtocol = {
+        return VideoItemsListZeroCaseViewModel(onButtonPressed: { [weak self] in
+            self?.reload()
+        })
+    }()
+
+    func sectionViewModel(inSection section: Int) -> VideoItemsListSectionViewModelProtocol? {
+        guard section >= 0, section < self.collections.count else {
+            return nil
+        }
+        return VideoItemsListSectionViewModel(collection: self.collections[section])
+    }
+    
     func itemViewModel(at indexPath: IndexPath) -> VideoItemViewModelProtocol? {
-        guard indexPath.section >= 0, indexPath.section < self.sections.value.count else { return nil }
-        guard indexPath.item >= 0, indexPath.item < self.sections.value[indexPath.section].items.count else { return nil }
-        return self.sections.value[indexPath.section].items[indexPath.item]
+        guard indexPath.section >= 0, indexPath.section < self.collections.count else { return nil }
+        guard indexPath.item >= 0, indexPath.item < self.collections[indexPath.section].videos.count else { return nil }
+        return VideoItemViewModel(videoItem: self.collections[indexPath.section].videos[indexPath.item])
     }
     
     func reload() {
-        let command: ExtensionCommand = .exportVideos
-        self.dependencies.commandsDispatcher.send(command: command)
+        self.dependencies.commandsDispatcher.send(command: .exportVideos)
     }
     
     func reset() {
-        for section in self.sections.value {
-            for item in section.items {
-                item.didFinishHover()
-            }
-        }
-    }
-    
-    private func handle(message: VideosListMessage) {
-        let sectionTitle: String = {
-            if let host = URL(string: message.documentInfo.location)?.host {
-                if let title = message.documentInfo.title, title.count > 0 {
-                    return "[\(host)] " + title
-                }
-                return "[\(host)]"
-            } else {
-                let location = message.documentInfo.location
-                let truncated = location.prefix(min(location.count, 30))
-                return "[\(truncated)]"
-            }
-        }()
-        
-        var sections = self.sections.value
-        let section = VideoItemsListSection(title: sectionTitle,
-                                            items: message.messageInfo.items.map({
-                                                VideoItemViewModel(videoItem: $0, dependencies: self.dependencies)
-                                            }))
-        guard !section.items.isEmpty else { return }
-        
-        if let existingSectionIndex = sections.index(where: { $0.title == sectionTitle }) {
-            sections.remove(at: existingSectionIndex)
-            sections.insert(section, at: existingSectionIndex)
-        } else {
-            sections.append(section)
-        }
-        self.sections.value = sections
+        self.dependencies.commandsDispatcher.send(command: .removeHighlight)
     }
     
     var numberOfSections: Int {
-        return self.sections.value.count
+        return self.collections.count
     }
     
     func numberOfItems(inSection section: Int) -> Int {
-        guard section >= 0, section < self.sections.value.count else { return 0 }
-        return self.sections.value[section].items.count
+        guard section >= 0, section < self.collections.count else { return 0 }
+        return self.collections[section].videos.count
     }
     
     func didSelectItem(at indexPath: IndexPath) {
         guard let viewModel = self.itemViewModel(at: indexPath) else { return }
         viewModel.didSelect()
+    }
+    
+    // MARK: - Private
+    
+    private func handle(message: VideosListMessage) {
+        let collection = message.collection
+        guard !collection.videos.isEmpty else { return }
+        
+        self.collections = {
+            var collections = self.collections
+            if let existingSectionIndex = collections.index(where: { $0.uid == collection.uid }) {
+                collections.remove(at: existingSectionIndex)
+                collections.insert(collection, at: existingSectionIndex)
+            } else {
+                collections.append(collection)
+            }
+            return collections
+        }()
     }
 }

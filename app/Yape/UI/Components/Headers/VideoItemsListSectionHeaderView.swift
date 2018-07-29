@@ -13,7 +13,7 @@ final class VideoItemsListSectionHeaderView: NSView {
         static let titleViewSidePadding: CGFloat = 15
     }
     
-    var viewModel: VideoItemsListSectionProtocol? {
+    var viewModel: VideoItemsListSectionViewModelProtocol? {
         didSet {
             self.applyViewModel()
         }
@@ -39,6 +39,7 @@ final class VideoItemsListSectionHeaderView: NSView {
         textField.textColor = .labelColor
         textField.isBordered = false
         textField.maximumNumberOfLines = 1
+        textField.lineBreakMode = .byTruncatingTail
         return textField
     }()
     

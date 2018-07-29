@@ -44,6 +44,7 @@ final class VideoItemView: NSCollectionViewItem, ReusableView {
         textField.backgroundColor = .clear
         textField.isBordered = false
         textField.maximumNumberOfLines = 1
+        textField.lineBreakMode = .byTruncatingTail
         return textField
     }()
     

@@ -53,7 +53,7 @@
                     </scroller>
                 </scrollView>
                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="fvA-Mo-tld">
-                    <rect key="frame" x="167" y="76" width="103" height="48"/>
+                    <rect key="frame" x="167" y="75" width="103" height="48"/>
                     <subviews>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Uta-uW-ySP">
                             <rect key="frame" x="-2" y="31" width="107" height="17"/>
@@ -75,10 +75,10 @@
                         </button>
                     </subviews>
                     <constraints>
+                        <constraint firstItem="80W-WV-Cqw" firstAttribute="centerX" secondItem="fvA-Mo-tld" secondAttribute="centerX" id="4iG-Zo-YMW"/>
                         <constraint firstItem="80W-WV-Cqw" firstAttribute="top" secondItem="Uta-uW-ySP" secondAttribute="bottom" constant="10" id="BmT-EX-i2d"/>
                         <constraint firstItem="Uta-uW-ySP" firstAttribute="top" secondItem="fvA-Mo-tld" secondAttribute="top" id="IV0-gp-9o7"/>
                         <constraint firstAttribute="trailing" secondItem="Uta-uW-ySP" secondAttribute="trailing" id="Ul8-BK-eXH"/>
-                        <constraint firstItem="80W-WV-Cqw" firstAttribute="centerX" secondItem="Uta-uW-ySP" secondAttribute="centerX" id="W73-kA-x1O"/>
                         <constraint firstAttribute="bottom" secondItem="80W-WV-Cqw" secondAttribute="bottom" id="kgc-vf-BZq"/>
                         <constraint firstItem="Uta-uW-ySP" firstAttribute="leading" secondItem="fvA-Mo-tld" secondAttribute="leading" id="npz-yh-1db"/>
                     </constraints>

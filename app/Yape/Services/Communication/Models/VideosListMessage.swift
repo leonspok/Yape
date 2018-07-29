@@ -8,9 +8,26 @@
 
 import Foundation
 
-typealias VideosListMessage = DocumentMessage<VideosListMessageInfo>
+struct VideosListMessage: ExtensionMessageProtocol {
+    static let messageType: ExtensionMessageType = .concrete(name: .videosList)
+    private let documentMessage: DocumentMessage<VideosListMessageInfo>
+    var collection: VideoItemsCollection {
+        return VideoItemsCollection(documentMessage: self.documentMessage)
+    }
+    
+    init?(dictionary: [String : Any]) {
+        guard let documentMessage = DocumentMessage<VideosListMessageInfo>(dictionary: dictionary) else {
+            return nil
+        }
+        self.documentMessage = documentMessage
+    }
+    
+    func asDictionary() -> [String : Any] {
+        return self.documentMessage.asDictionary()
+    }
+}
 
-struct VideosListMessageInfo: ExtensionMessageInfoProtocol {
+fileprivate struct VideosListMessageInfo: ExtensionMessageInfoProtocol {
     static let containingMessageType: ExtensionMessageType = .concrete(name: .videosList)
     let items: [VideoItem]
     
@@ -28,4 +45,24 @@ struct VideosListMessageInfo: ExtensionMessageInfoProtocol {
 
 fileprivate extension String {
     static let videos = "videos"
+}
+
+fileprivate extension VideoItemsCollection {
+    init(documentMessage: DocumentMessage<VideosListMessageInfo>) {
+        self.uid = Identifier(rawValue: documentMessage.documentInfo.uid.rawValue)
+        self.title = {
+            if let host = URL(string: documentMessage.documentInfo.location)?.host {
+                if let title = documentMessage.documentInfo.title, title.count > 0 {
+                    debugLog("[\(host)] " + title)
+                    return "[\(host)] " + title
+                }
+                return "[\(host)]"
+            } else {
+                let location = documentMessage.documentInfo.location
+                let truncated = location.prefix(min(location.count, 30))
+                return "[\(truncated)]"
+            }
+        }()
+        self.videos = documentMessage.messageInfo.items
+    }
 }

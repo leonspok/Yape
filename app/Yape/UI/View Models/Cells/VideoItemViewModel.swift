@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol VideoItemViewModelProtocol {
+protocol VideoItemViewModelProtocol: class {
     var title: String { get }
     
     func didStartHover()
@@ -32,13 +32,12 @@ final class VideoItemViewModel: VideoItemViewModelProtocol {
     }
     
     func didStartHover() {
-        let command: ExtensionCommand = .toggleHighlight(videoId: self.videoItem.uid, highlight: true)
+        let command: ExtensionCommand = .highlightVideo(videoId: self.videoItem.uid)
         self.dependencies.commandsDispatcher.send(command: command)
     }
     
     func didFinishHover() {
-        let command: ExtensionCommand = .toggleHighlight(videoId: self.videoItem.uid, highlight: false)
-        self.dependencies.commandsDispatcher.send(command: command)
+        self.dependencies.commandsDispatcher.send(command: .removeHighlight)
     }
     
     func didSelect() {

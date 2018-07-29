@@ -10,7 +10,9 @@ import Foundation
 
 enum ExtensionCommand {
     case exportVideos
-    case toggleHighlight(videoId: VideoItem.Identifier, highlight: Bool)
+    case highlightVideo(videoId: VideoItem.Identifier)
+    case removeHighlight
+    case scrollToVideo(videoId: VideoItem.Identifier)
     case enablePiP(videoId: VideoItem.Identifier)
 }
 
@@ -19,8 +21,12 @@ extension ExtensionCommand {
         switch self {
         case .exportVideos:
             return "export_videos"
-        case .toggleHighlight:
-            return "toggle_highlight"
+        case .highlightVideo:
+            return "highlight_video"
+        case .scrollToVideo:
+            return "scroll_to_video"
+        case .removeHighlight:
+            return "remove_highlight"
         case .enablePiP:
             return "enable_pip"
         }
@@ -30,9 +36,12 @@ extension ExtensionCommand {
         switch self {
         case .exportVideos:
             return nil
-        case .toggleHighlight(let videoId, let highlight):
-            return [.uid: videoId.rawValue,
-                    .highlight: highlight]
+        case .highlightVideo(let videoId):
+            return [.uid: videoId.rawValue]
+        case .removeHighlight:
+            return nil
+        case .scrollToVideo(let videoId):
+            return [.uid: videoId.rawValue]
         case .enablePiP(let videoId):
             return [.uid: videoId.rawValue]
         }
@@ -41,5 +50,4 @@ extension ExtensionCommand {
 
 fileprivate extension String {
     static let uid = "uid"
-    static let highlight = "highlight"
 }

@@ -1,9 +1,13 @@
 safari.self.addEventListener("message", handleMessage);
 
+const documentUID = guid()
+
 function handleMessage(event) {
     const messageHandlers = {
         "export_videos": getVideosRequestHandler,
-        "toggle_highlight": toggleHighlightRequestHandler,
+        "highlight_video": highlightVideoRequestHandler,
+        "remove_highlight": removeHighlightRequestHandler,
+        "scroll_to_video": scrollToVideoRequestHandler,
         "enable_pip": enablePiPRequestHandler
     }
     
@@ -19,6 +23,7 @@ function handleMessage(event) {
 function sendMessage(name, message) {
     var messageObject = {}
     messageObject.document = {
+        "uid": documentUID,
         "location": document.URL
     }
     if (document.title != undefined, document.title.length > 0) {
@@ -53,14 +58,21 @@ function getVideosRequestHandler(params) {
     sendMessage("videos_list", info)
 }
 
-function toggleHighlightRequestHandler(params) {
+function highlightVideoRequestHandler(params) {
     const video = getVideo(params["uid"])
     if (video != null) {
-        if (params["highlight"]) {
-            highlightElement(video)
-        } else {
-            removeHightlight(video)
-        }
+        highlightElement(video)
+    }
+}
+
+function removeHighlightRequestHandler(params) {
+    removeHightlight()
+}
+
+function scrollToVideoRequestHandler(params) {
+    const video = getVideo(params["uid"])
+    if (video != null) {
+        video.scrollIntoView()
     }
 }
 
@@ -88,7 +100,8 @@ function getWebpageVideos() {
     const elements = document.getElementsByTagName("video")
     for (let i = 0; i < elements.length; i++) {
         const element = elements[i]
-        if (element.webkitSupportsPresentationMode == undefined || !element.webkitSupportsPresentationMode("picture-in-picture")) {
+        if (element.webkitSupportsPresentationMode == undefined || !element.webkitSupportsPresentationMode("picture-in-picture") ||
+            element.readyState < 3) {
             continue
         }
         if (element.getAttribute("data-yape-uuid") == undefined) {
@@ -99,11 +112,11 @@ function getWebpageVideos() {
 }
 
 function enablePiP(video) {
+    video.play()
     video.webkitSetPresentationMode("picture-in-picture")
 }
 
 function highlightElement(element) {
-    const document = element.ownerDocument
     const rect = element.getBoundingClientRect()
     const bodyRect = document.body.getBoundingClientRect()
     let overlay = document.createElement("div")
@@ -118,10 +131,9 @@ function highlightElement(element) {
     document.body.appendChild(overlay)
 }
 
-function removeHightlight(element) {
-    const document = element.ownerDocument
+function removeHightlight() {
     const overlay = document.getElementById("yape-overlay")
-    if (overlay.parentElement != undefined) {
+    if (overlay != null && overlay.parentElement != undefined && overlay.parentElement != null) {
         overlay.parentElement.removeChild(overlay)
     }
 }

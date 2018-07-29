@@ -30,7 +30,6 @@ final class SafariExtensionViewController: SFSafariExtensionViewController, NSCo
             self.applyViewModel()
         }
     }
-    private var viewModelObserver: ObserveToken<[VideoItemsListSectionProtocol]>?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,17 +59,22 @@ final class SafariExtensionViewController: SFSafariExtensionViewController, NSCo
         }
         self.zeroCaseLabel.stringValue = viewModel.zeroCaseViewModel.text
         self.reloadButton.title = viewModel.zeroCaseViewModel.buttonTitle
-        self.viewModelObserver = viewModel.sections.observeNew({ [weak self] _ in
+        viewModel.onUpdate = { [weak self] in
             self?.updateData()
-        })
+        }
         self.updateData()
     }
     
     private func updateData() {
-        if let viewModel = self.viewModel, !viewModel.sections.value.isEmpty {
-            let totalHeight: CGFloat = self.viewModel?.sections.value.reduce(0, { (sum, section) -> CGFloat in
-                return sum + Constants.sectionHeaderHeight + CGFloat(section.items.count) * Constants.cellHeight
-            }) ?? 0
+        if let viewModel = self.viewModel, viewModel.numberOfSections != 0 {
+            let totalHeight: CGFloat = {
+                var sum: CGFloat = 0
+                for i in 0..<viewModel.numberOfSections {
+                    sum += Constants.sectionHeaderHeight
+                    sum += Constants.cellHeight * CGFloat(viewModel.numberOfItems(inSection: i))
+                }
+                return sum
+            }()
             let height = max(Constants.cellHeight, min(totalHeight, Constants.maxListHeight))
             self.preferredContentSize = NSSize(width: Constants.listWidth,
                                                height: height)
@@ -90,14 +94,14 @@ final class SafariExtensionViewController: SFSafariExtensionViewController, NSCo
         guard let viewModel = self.viewModel else {
             return 0
         }
-        return viewModel.sections.value.count
+        return viewModel.numberOfSections
     }
     
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let viewModel = self.viewModel, section >= 0, section < viewModel.sections.value.count else {
+        guard let viewModel = self.viewModel else {
             return 0
         }
-        return viewModel.sections.value[section].items.count
+        return viewModel.numberOfItems(inSection: section)
     }
     
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
@@ -113,12 +117,7 @@ final class SafariExtensionViewController: SFSafariExtensionViewController, NSCo
             let view = VideoItemsListSectionHeaderView.dequeueSupplementaryView(in: collectionView, at: indexPath) else {
             return NSView()
         }
-        guard let viewModel = self.viewModel,
-            indexPath.section > 0,
-            indexPath.section < viewModel.sections.value.count else {
-            return view
-        }
-        view.viewModel = viewModel.sections.value[indexPath.section]
+        view.viewModel = self.viewModel?.sectionViewModel(inSection: indexPath.section)
         return view
     }
     

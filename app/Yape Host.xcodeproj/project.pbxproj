@@ -29,7 +29,7 @@
 		E39175C721050C1A0075F5D8 /* VideoItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39175C621050C1A0075F5D8 /* VideoItemView.swift */; };
 		E39175CA210511C10075F5D8 /* VideoItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39175C9210511C10075F5D8 /* VideoItemViewModel.swift */; };
 		E39175CC2105147A0075F5D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E39175CB2105147A0075F5D8 /* Assets.xcassets */; };
-		E39175D0210520060075F5D8 /* VideoItemsListSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39175CF210520060075F5D8 /* VideoItemsListSection.swift */; };
+		E39175D0210520060075F5D8 /* VideoItemsListSectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39175CF210520060075F5D8 /* VideoItemsListSectionViewModel.swift */; };
 		E39175D22105201B0075F5D8 /* VideoItemsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39175D12105201B0075F5D8 /* VideoItemsListViewModel.swift */; };
 		E39175D4210521BB0075F5D8 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39175D3210521BB0075F5D8 /* Observable.swift */; };
 		E39175D8210531830075F5D8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E39175D7210531830075F5D8 /* Localizable.strings */; };
@@ -53,6 +53,7 @@
 		E391763E210E0A280075F5D8 /* DebugLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = E391763D210E0A280075F5D8 /* DebugLog.swift */; };
 		E3917642210E323D0075F5D8 /* VideoItemsListSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3917641210E323D0075F5D8 /* VideoItemsListSectionHeaderView.swift */; };
 		E3917644210E353C0075F5D8 /* VideoItemsListZeroCaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3917643210E353C0075F5D8 /* VideoItemsListZeroCaseViewModel.swift */; };
+		E3917646210E448D0075F5D8 /* VideoItemsCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3917645210E448D0075F5D8 /* VideoItemsCollection.swift */; };
 		E3C733962103D49F004D0FCC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C733952103D49F004D0FCC /* AppDelegate.swift */; };
 		E3C733982103D4A2004D0FCC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3C733972103D4A2004D0FCC /* Assets.xcassets */; };
 		E3C7339B2103D4A2004D0FCC /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3C733992103D4A2004D0FCC /* MainMenu.xib */; };
@@ -107,7 +108,7 @@
 		E39175C621050C1A0075F5D8 /* VideoItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoItemView.swift; sourceTree = "<group>"; };
 		E39175C9210511C10075F5D8 /* VideoItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoItemViewModel.swift; sourceTree = "<group>"; };
 		E39175CB2105147A0075F5D8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		E39175CF210520060075F5D8 /* VideoItemsListSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoItemsListSection.swift; sourceTree = "<group>"; };
+		E39175CF210520060075F5D8 /* VideoItemsListSectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoItemsListSectionViewModel.swift; sourceTree = "<group>"; };
 		E39175D12105201B0075F5D8 /* VideoItemsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoItemsListViewModel.swift; sourceTree = "<group>"; };
 		E39175D3210521BB0075F5D8 /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		E39175D7210531830075F5D8 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
@@ -131,6 +132,7 @@
 		E391763D210E0A280075F5D8 /* DebugLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugLog.swift; sourceTree = "<group>"; };
 		E3917641210E323D0075F5D8 /* VideoItemsListSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoItemsListSectionHeaderView.swift; sourceTree = "<group>"; };
 		E3917643210E353C0075F5D8 /* VideoItemsListZeroCaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoItemsListZeroCaseViewModel.swift; sourceTree = "<group>"; };
+		E3917645210E448D0075F5D8 /* VideoItemsCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoItemsCollection.swift; sourceTree = "<group>"; };
 		E3C733922103D49F004D0FCC /* Yape Host.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Yape Host.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3C733952103D49F004D0FCC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E3C733972103D4A2004D0FCC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -206,7 +208,9 @@
 		E39175912103F25A0075F5D8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E391762D210D203A0075F5D8 /* DocumentInfo.swift */,
 				E391758C2103F0390075F5D8 /* VideoItem.swift */,
+				E3917645210E448D0075F5D8 /* VideoItemsCollection.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -280,7 +284,7 @@
 		E39175CE21051FCE0075F5D8 /* VideoItemsList */ = {
 			isa = PBXGroup;
 			children = (
-				E39175CF210520060075F5D8 /* VideoItemsListSection.swift */,
+				E39175CF210520060075F5D8 /* VideoItemsListSectionViewModel.swift */,
 				E39175D12105201B0075F5D8 /* VideoItemsListViewModel.swift */,
 				E3917643210E353C0075F5D8 /* VideoItemsListZeroCaseViewModel.swift */,
 			);
@@ -314,7 +318,6 @@
 				E3917620210D117E0075F5D8 /* ExtensionCommand.swift */,
 				E3917626210D13E50075F5D8 /* ExtensionMessageType.swift */,
 				E391763B210E095C0075F5D8 /* ExtensionConcreteMessageName.swift */,
-				E391762D210D203A0075F5D8 /* DocumentInfo.swift */,
 				E3917637210DE7790075F5D8 /* AnyMessage.swift */,
 				E391762B210D16B50075F5D8 /* DocumentMessage.swift */,
 				E3917635210DE6E10075F5D8 /* VideosListMessage.swift */,
@@ -477,6 +480,7 @@
 			files = (
 				E39175DB210533410075F5D8 /* ReusableView.swift in Sources */,
 				E3917627210D13E50075F5D8 /* ExtensionMessageType.swift in Sources */,
+				E3917646210E448D0075F5D8 /* VideoItemsCollection.swift in Sources */,
 				E3917642210E323D0075F5D8 /* VideoItemsListSectionHeaderView.swift in Sources */,
 				E3917630210DE1320075F5D8 /* DictionaryRepresentable.swift in Sources */,
 				E391759D2104BBFB0075F5D8 /* Cancellable.swift in Sources */,
@@ -510,7 +514,7 @@
 				E39175A92104C24A0075F5D8 /* ExecutionContextProtocol.swift in Sources */,
 				E39175AF2104CB520075F5D8 /* CommonTypes.swift in Sources */,
 				E39175BA2104D9150075F5D8 /* ServicesContainer.swift in Sources */,
-				E39175D0210520060075F5D8 /* VideoItemsListSection.swift in Sources */,
+				E39175D0210520060075F5D8 /* VideoItemsListSectionViewModel.swift in Sources */,
 				E39175D4210521BB0075F5D8 /* Observable.swift in Sources */,
 				E39175C721050C1A0075F5D8 /* VideoItemView.swift in Sources */,
 				E39175B82104D8590075F5D8 /* ServicesProvider.swift in Sources */,

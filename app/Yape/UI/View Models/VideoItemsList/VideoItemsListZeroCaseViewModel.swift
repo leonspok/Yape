@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol VideoItemsListZeroCaseViewModelProtocol {
+protocol VideoItemsListZeroCaseViewModelProtocol: class {
     var text: String { get }
     var buttonTitle: String { get }
     func buttonPressed()
