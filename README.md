@@ -28,4 +28,4 @@ Basically, this is very similar extension to [PiPifier](https://github.com/arnoa
 
 - [ ] [Issue #1](https://github.com/leonspok/Yape/issues/1): sometimes you need to click at least once somewhere on the page before enabling PiP.
 - [ ] [Issue #2](https://github.com/leonspok/Yape/issues/2): sometimes you need to click "play" button before enabling PiP.
-- [ ] [Issue #3](https://github.com/leonspok/Yape/issues/3): some videos don't work at all (for example, [coub.com](https://coub.com), gifs on [tjournal.ru](https://tjournal.ru))
+- [X] ~[Issue #3](https://github.com/leonspok/Yape/issues/3): some videos don't work at all (for example, [coub.com](https://coub.com), gifs on [tjournal.ru](https://tjournal.ru))~
