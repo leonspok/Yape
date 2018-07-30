@@ -1,12 +1,12 @@
 # Yape
 
-![](./README\ resources/app_icon.png)
+![](https://github.com/leonspok/Yape/raw/master/README%20resources/app_icon.png)
 
 Yet Another PiP Extension. 
 
 Yape does very simple thing: finds all HTML5 videos on a webpage and allows you to play them in Picture-in-Picture mode. Just click on an item from the list and this video will be switched to Picture-in-Picture mode. 
 
-![](./README\ resources/example_screenshot.png)
+![](https://github.com/leonspok/Yape/raw/master/README%20resources/example_screenshot.png)
 
 Basically, this is very similar extension to [PiPifier](https://github.com/arnoappenzeller/PiPifier) and [PiedPiPer](https://github.com/JoeKuhns/PiedPiPer.safariextension), which I discovered in the middle of development. The main difference is that Yape doesn't add any buttons to the webpage. Instead, you enable Picture-in-Picture mode from Safari toolbar. 
 
@@ -22,7 +22,7 @@ Basically, this is very similar extension to [PiPifier](https://github.com/arnoa
 3. Launch Yape
 4. Go to Safari → Preferences → Extensions and enable Yape
 
-![](./README\ resources/preferences_screenshot.png)
+![](https://github.com/leonspok/Yape/raw/master/README%20resources/preferences_screenshot.png)
 
 ## Known issues
 
