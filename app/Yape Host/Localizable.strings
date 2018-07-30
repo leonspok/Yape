@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  Yape Host
+
+  Created by Igor Savelev on 30/07/2018.
+  Copyright © 2018 Igor Savelev. All rights reserved.
+*/
+
+"notification.extension.installed.text" = "Extension installed";
+"notification.extension.installed.informative.text" = "Please, enable it in Safari";
