@@ -1,6 +1,6 @@
 # Yape
 
-![](https://github.com/leonspok/Yape/raw/master/README%20resources/app_icon.png)
+<img src="https://github.com/leonspok/Yape/raw/master/README%20resources/app_icon.png" width=128 height=128>
 
 Yet Another PiP Extension. 
 
