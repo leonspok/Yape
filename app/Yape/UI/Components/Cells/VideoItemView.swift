@@ -10,9 +10,12 @@ import AppKit
 
 final class VideoItemView: NSCollectionViewItem, ReusableView {
     private struct Constants {
-        static let hoverViewCornerRadius: CGFloat = 10
-        static let hoverViewInset: NSEdgeInsets = NSEdgeInsets(top: 3, left: 5, bottom: 3, right: 5)
-        static let titleViewSidePadding: CGFloat = 15
+        static let hoverViewCornerRadius: CGFloat = 0
+        static let hoverViewInsets: NSEdgeInsets = NSEdgeInsetsZero
+        static let stackViewInsets: NSEdgeInsets = NSEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
+        static let stackViewSpacing: CGFloat = 5
+        static let separatorHeight: CGFloat = 1
+        static let separatorInset: NSEdgeInsets = NSEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
     }
     
     var viewModel: VideoItemViewModelProtocol? {
@@ -22,6 +25,16 @@ final class VideoItemView: NSCollectionViewItem, ReusableView {
     }
     
     // MARK: Subviews
+    
+    private lazy var stackView: NSStackView = {
+        let stackView = NSStackView(frame: .zero)
+        stackView.alignment = .centerY
+        stackView.distribution = .fill
+        stackView.orientation = .horizontal
+        stackView.spacing = Constants.stackViewSpacing
+        stackView.edgeInsets = Constants.stackViewInsets
+        return stackView
+    }()
     
     private lazy var hoverView: NSView = {
         let view = NSView()
@@ -48,6 +61,32 @@ final class VideoItemView: NSCollectionViewItem, ReusableView {
         return textField
     }()
     
+    private lazy var durationLabel: NSTextField = {
+        let textField = NSTextField(frame: .zero)
+        textField.isEditable = false
+        textField.isSelectable = false
+        textField.font = NSFont.labelFont(ofSize: 12.0)
+        textField.textColor = .secondaryLabelColor
+        textField.backgroundColor = .clear
+        textField.isBordered = false
+        textField.maximumNumberOfLines = 1
+        textField.lineBreakMode = .byTruncatingTail
+        return textField
+    }()
+    
+    private lazy var revealButton: NSButton = {
+        let button = NSButton(image: NSImage(named: .revealFreestandingTemplate)!, target: self, action: #selector(revealButtonPressed(_:)))
+        button.isBordered = false
+        return button
+    }()
+    
+    private lazy var separatorView: NSView = {
+        let view = NSView(frame: .zero)
+        view.wantsLayer = true
+        view.layer?.backgroundColor = NSColor.lightGray.cgColor
+        return view
+    }()
+    
     private lazy var trackingArea: NSTrackingArea = {
         return NSTrackingArea(rect: self.view.bounds,
                               options: [.activeInKeyWindow, .mouseEnteredAndExited, .inVisibleRect],
@@ -67,18 +106,40 @@ final class VideoItemView: NSCollectionViewItem, ReusableView {
         self.hoverView.translatesAutoresizingMaskIntoConstraints = false
         self.hoverView.isHidden = true
         NSLayoutConstraint.activate([
-            self.hoverView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: Constants.hoverViewInset.left),
-            self.hoverView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: Constants.hoverViewInset.top),
-            self.hoverView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -Constants.hoverViewInset.right),
-            self.hoverView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -Constants.hoverViewInset.bottom)
+            self.hoverView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: Constants.hoverViewInsets.left),
+            self.hoverView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: Constants.hoverViewInsets.top),
+            self.hoverView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -Constants.hoverViewInsets.right),
+            self.hoverView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -Constants.hoverViewInsets.bottom)
         ])
         
-        self.view.addSubview(self.titleView)
-        self.titleView.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(self.stackView)
+        self.stackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.titleView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
-            self.titleView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: Constants.titleViewSidePadding),
-            self.titleView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -Constants.titleViewSidePadding)
+            self.stackView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            self.stackView.topAnchor.constraint(equalTo: self.view.topAnchor),
+            self.stackView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            self.stackView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
+        ])
+        
+        self.titleView.translatesAutoresizingMaskIntoConstraints = false
+        self.titleView.setContentHuggingPriority(.defaultLow, for: .horizontal)
+        self.stackView.addArrangedSubview(self.titleView)
+        
+        self.durationLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.durationLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
+        self.stackView.addArrangedSubview(self.durationLabel)
+        
+        self.revealButton.translatesAutoresizingMaskIntoConstraints = false
+        self.revealButton.setContentCompressionResistancePriority(.required, for: .horizontal)
+        self.stackView.addArrangedSubview(self.revealButton)
+        
+        self.view.addSubview(self.separatorView)
+        self.separatorView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            self.separatorView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+            self.separatorView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: Constants.separatorInset.left),
+            self.separatorView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -Constants.separatorInset.right),
+            self.separatorView.heightAnchor.constraint(equalToConstant: Constants.separatorHeight)
         ])
     }
     
@@ -87,9 +148,12 @@ final class VideoItemView: NSCollectionViewItem, ReusableView {
     private func applyViewModel() {
         guard let viewModel = self.viewModel else {
             self.titleView.stringValue = ""
+            self.durationLabel.stringValue = ""
             return
         }
         self.titleView.stringValue = viewModel.title
+        self.durationLabel.stringValue = viewModel.duration
+        self.separatorView.isHidden = viewModel.isLastInSection
     }
     
     // MARK: Mouse events
@@ -104,6 +168,13 @@ final class VideoItemView: NSCollectionViewItem, ReusableView {
         super.mouseExited(with: event)
         self.hoverView.isHidden = true
         self.viewModel?.didFinishHover()
+    }
+    
+    // MARK: Actions
+    
+    @objc
+    private func revealButtonPressed(_ sender: NSButton) {
+        self.viewModel?.didPressReveal()
     }
 }
 

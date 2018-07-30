@@ -53,7 +53,6 @@ fileprivate extension VideoItemsCollection {
         self.title = {
             if let host = URL(string: documentMessage.documentInfo.location)?.host {
                 if let title = documentMessage.documentInfo.title, title.count > 0 {
-                    debugLog("[\(host)] " + title)
                     return "[\(host)] " + title
                 }
                 return "[\(host)]"

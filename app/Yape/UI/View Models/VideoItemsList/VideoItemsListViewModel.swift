@@ -64,7 +64,9 @@ final class VideoItemsListViewModel: VideoItemsListViewModelProtocol {
     func itemViewModel(at indexPath: IndexPath) -> VideoItemViewModelProtocol? {
         guard indexPath.section >= 0, indexPath.section < self.collections.count else { return nil }
         guard indexPath.item >= 0, indexPath.item < self.collections[indexPath.section].videos.count else { return nil }
-        return VideoItemViewModel(videoItem: self.collections[indexPath.section].videos[indexPath.item])
+        let viewModel = VideoItemViewModel(videoItem: self.collections[indexPath.section].videos[indexPath.item])
+        viewModel.isLastInSection = (indexPath.item == self.numberOfItems(inSection: indexPath.section) - 1)
+        return viewModel
     }
     
     func reload() {
@@ -93,14 +95,15 @@ final class VideoItemsListViewModel: VideoItemsListViewModelProtocol {
     
     private func handle(message: VideosListMessage) {
         let collection = message.collection
-        guard !collection.videos.isEmpty else { return }
         
         self.collections = {
             var collections = self.collections
             if let existingSectionIndex = collections.index(where: { $0.uid == collection.uid }) {
                 collections.remove(at: existingSectionIndex)
-                collections.insert(collection, at: existingSectionIndex)
-            } else {
+                if !collection.videos.isEmpty {
+                    collections.insert(collection, at: existingSectionIndex)
+                }
+            } else if !collection.videos.isEmpty {
                 collections.append(collection)
             }
             return collections

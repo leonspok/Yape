@@ -12,7 +12,7 @@ import SafariServices
 final class SafariExtensionViewController: SFSafariExtensionViewController, NSCollectionViewDataSource, NSCollectionViewDelegateFlowLayout {
     private struct Constants {
         static let listWidth: CGFloat = 250
-        static let maxListHeight: CGFloat = 500
+        static let maxListHeight: CGFloat = 400
         static let sectionHeaderHeight: CGFloat = 20
         static let cellHeight: CGFloat = 30
 
@@ -42,8 +42,7 @@ final class SafariExtensionViewController: SFSafariExtensionViewController, NSCo
         
         VideoItemView.registerCell(in: self.collectionView)
         VideoItemsListSectionHeaderView.registerSupplementaryView(in: self.collectionView)
-        self.preferredContentSize = NSSize(width: Constants.listWidth,
-                                           height: Constants.cellHeight)
+        self.updateData()
     }
     
     override func viewDidDisappear() {
@@ -53,12 +52,14 @@ final class SafariExtensionViewController: SFSafariExtensionViewController, NSCo
     
     private func applyViewModel() {
         guard let viewModel = self.viewModel else {
-            self.preferredContentSize = NSSize(width: Constants.listWidth,
-                                               height: Constants.cellHeight)
+            self.updateData()
             return
         }
         self.zeroCaseLabel.stringValue = viewModel.zeroCaseViewModel.text
         self.reloadButton.title = viewModel.zeroCaseViewModel.buttonTitle
+        self.reloadButton.image = viewModel.zeroCaseViewModel.buttonImage
+        self.reloadButton.imagePosition = .imageLeading
+        
         viewModel.onUpdate = { [weak self] in
             self?.updateData()
         }
@@ -76,14 +77,22 @@ final class SafariExtensionViewController: SFSafariExtensionViewController, NSCo
                 return sum
             }()
             let height = max(Constants.cellHeight, min(totalHeight, Constants.maxListHeight))
-            self.preferredContentSize = NSSize(width: Constants.listWidth,
-                                               height: height)
+            let size = NSSize(width: Constants.listWidth,
+                              height: height)
+            if size != self.preferredContentSize, self.isViewLoaded {
+                self.preferredContentSize = size
+            }
             self.zeroCaseView.isHidden = true
+            self.collectionView.isHidden = false
         } else {
             let height = self.zeroCaseView.bounds.size.height + Constants.zeroCaseViewVerticalMargin * 2
-            self.preferredContentSize = NSSize(width: Constants.listWidth,
-                                               height: height)
+            let size = NSSize(width: Constants.listWidth,
+                              height: height)
+            if size != self.preferredContentSize, self.isViewLoaded {
+                self.preferredContentSize = size
+            }
             self.zeroCaseView.isHidden = false
+            self.collectionView.isHidden = true
         }
         self.collectionView.reloadData()
     }
@@ -137,6 +146,20 @@ final class SafariExtensionViewController: SFSafariExtensionViewController, NSCo
         let size = NSSize(width: collectionView.bounds.size.width, height: Constants.sectionHeaderHeight)
         return size
     }
+    
+    func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, insetForSectionAt section: Int) -> NSEdgeInsets {
+        return NSEdgeInsetsZero
+    }
+    
+    func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+    // MARK: - Actions
     
     @IBAction func reloadButtonPressed(_ sender: Any) {
         self.viewModel?.zeroCaseViewModel.buttonPressed()

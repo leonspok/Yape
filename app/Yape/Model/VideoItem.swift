@@ -13,6 +13,7 @@ struct VideoItem {
     let uid: Identifier
     let title: String
     let isPlaying: Bool
+    let duration: TimeInterval
 }
 
 extension VideoItem: Equatable {
@@ -37,12 +38,14 @@ extension VideoItem: DictionaryRepresentable {
         self.uid = Identifier(rawValue: uidString)
         self.title = title
         self.isPlaying = isPlaying
+        self.duration = (dictionary[.duration] as? TimeInterval) ?? 0
     }
     
     func asDictionary() -> [String: Any] {
         let dictionary: [String: Any] = [.uid: self.uid.rawValue,
                                          .title: self.title,
-                                         .isPlaying: self.isPlaying]
+                                         .isPlaying: self.isPlaying,
+                                         .duration: self.duration]
         return dictionary
     }
 }
@@ -53,4 +56,5 @@ fileprivate extension String {
     static let uid = "uid"
     static let title = "title"
     static let isPlaying = "is_playing"
+    static let duration = "duration"
 }
