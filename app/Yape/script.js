@@ -117,7 +117,8 @@
         for (let i = 0; i < elements.length; i++) {
             const element = elements[i]
             if (element.webkitSupportsPresentationMode == undefined || !element.webkitSupportsPresentationMode("picture-in-picture") ||
-                element.readyState < 3) {
+                element.readyState < 3 ||
+                element.loop) {
                 continue
             }
             if (element.getAttribute("data-yape-uuid") == undefined) {

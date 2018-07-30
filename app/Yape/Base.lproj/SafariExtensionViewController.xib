@@ -24,7 +24,7 @@
             <subviews>
                 <scrollView wantsLayer="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t2o-vj-H2Q">
                     <rect key="frame" x="0.0" y="0.0" width="437" height="198"/>
-                    <clipView key="contentView" id="YYU-EL-qDT">
+                    <clipView key="contentView" drawsBackground="NO" id="YYU-EL-qDT">
                         <rect key="frame" x="0.0" y="0.0" width="437" height="198"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -64,8 +64,8 @@
                             </textFieldCell>
                         </textField>
                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="80W-WV-Cqw">
-                            <rect key="frame" x="3" y="-7" width="98" height="32"/>
-                            <buttonCell key="cell" type="push" title="⟲ Reload" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="C0K-zR-Qe6">
+                            <rect key="frame" x="11" y="-7" width="82" height="32"/>
+                            <buttonCell key="cell" type="push" title="Reload" bezelStyle="rounded" image="NSRefreshTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="C0K-zR-Qe6">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
@@ -95,4 +95,7 @@
             <point key="canvasLocation" x="192.5" y="208"/>
         </customView>
     </objects>
+    <resources>
+        <image name="NSRefreshTemplate" width="11" height="15"/>
+    </resources>
 </document>
