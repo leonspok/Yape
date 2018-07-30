@@ -7,21 +7,20 @@
 //
 
 import Cocoa
+import AppKit
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-
-    @IBOutlet weak var window: NSWindow!
-
-
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Insert code here to initialize your application
+        let notification = NSUserNotification()
+        notification.title = NSLocalizedString("notification.extension.installed.text", comment: "Extension installed")
+        notification.informativeText = NSLocalizedString("notification.extension.installed.informative.text", comment: "Please, enable it in Safari")
+        notification.hasActionButton = false
+        NSUserNotificationCenter.default.deliver(notification)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 10.0) {
+            NSApplication.shared.terminate(nil)
+        }
     }
-
-    func applicationWillTerminate(_ aNotification: Notification) {
-        // Insert code here to tear down your application
-    }
-
-
 }
 

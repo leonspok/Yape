@@ -15,13 +15,13 @@
     {
       "size" : "32x32",
       "idiom" : "mac",
-      "filename" : "Artboard_32pt.png",
+      "filename" : "Artboard@32pt-1.png",
       "scale" : "1x"
     },
     {
       "size" : "32x32",
       "idiom" : "mac",
-      "filename" : "Artboard_64pt.png",
+      "filename" : "Artboard@64pt.png",
       "scale" : "2x"
     },
     {
@@ -39,25 +39,25 @@
     {
       "size" : "256x256",
       "idiom" : "mac",
-      "filename" : "Artboard_256pt.png",
+      "filename" : "Artboard@256pt-1.png",
       "scale" : "1x"
     },
     {
       "size" : "256x256",
       "idiom" : "mac",
-      "filename" : "Artboard_512pt-1.png",
+      "filename" : "Artboard@512pt.png",
       "scale" : "2x"
     },
     {
       "size" : "512x512",
       "idiom" : "mac",
-      "filename" : "Artboard_512pt.png",
+      "filename" : "Artboard@512pt-1.png",
       "scale" : "1x"
     },
     {
       "size" : "512x512",
       "idiom" : "mac",
-      "filename" : "Artboard_1024pt.png",
+      "filename" : "Artboard@1024pt.png",
       "scale" : "2x"
     }
   ],

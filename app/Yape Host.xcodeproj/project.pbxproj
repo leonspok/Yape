@@ -54,6 +54,7 @@
 		E3917642210E323D0075F5D8 /* VideoItemsListSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3917641210E323D0075F5D8 /* VideoItemsListSectionHeaderView.swift */; };
 		E3917644210E353C0075F5D8 /* VideoItemsListZeroCaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3917643210E353C0075F5D8 /* VideoItemsListZeroCaseViewModel.swift */; };
 		E3917646210E448D0075F5D8 /* VideoItemsCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3917645210E448D0075F5D8 /* VideoItemsCollection.swift */; };
+		E3917648210F641C0075F5D8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E3917647210F641C0075F5D8 /* Localizable.strings */; };
 		E3C733962103D49F004D0FCC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C733952103D49F004D0FCC /* AppDelegate.swift */; };
 		E3C733982103D4A2004D0FCC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3C733972103D4A2004D0FCC /* Assets.xcassets */; };
 		E3C7339B2103D4A2004D0FCC /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3C733992103D4A2004D0FCC /* MainMenu.xib */; };
@@ -133,6 +134,7 @@
 		E3917641210E323D0075F5D8 /* VideoItemsListSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoItemsListSectionHeaderView.swift; sourceTree = "<group>"; };
 		E3917643210E353C0075F5D8 /* VideoItemsListZeroCaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoItemsListZeroCaseViewModel.swift; sourceTree = "<group>"; };
 		E3917645210E448D0075F5D8 /* VideoItemsCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoItemsCollection.swift; sourceTree = "<group>"; };
+		E3917647210F641C0075F5D8 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		E3C733922103D49F004D0FCC /* Yape Host.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Yape Host.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3C733952103D49F004D0FCC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E3C733972103D4A2004D0FCC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -369,6 +371,7 @@
 				E3C733992103D4A2004D0FCC /* MainMenu.xib */,
 				E3C7339C2103D4A2004D0FCC /* Info.plist */,
 				E3C7339D2103D4A2004D0FCC /* Yape_Host.entitlements */,
+				E3917647210F641C0075F5D8 /* Localizable.strings */,
 			);
 			path = "Yape Host";
 			sourceTree = "<group>";
@@ -467,6 +470,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E3C733982103D4A2004D0FCC /* Assets.xcassets in Resources */,
+				E3917648210F641C0075F5D8 /* Localizable.strings in Resources */,
 				E3C7339B2103D4A2004D0FCC /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
