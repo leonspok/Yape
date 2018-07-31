@@ -13,6 +13,8 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     private let messagesProcessor: ExtensionMessagesProcessorProtocol = ServicesContainer.shared.extensionMessagesProcessor
     private let commandsDispatcher: CommandsDispatcherProtocol = ServicesContainer.shared.commandsDispatcher
     
+    private let popoverViewModel = VideoItemsListViewModel()
+    
     override func messageReceived(withName messageName: String, from page: SFSafariPage, userInfo: [String : Any]?) {
         self.contextObserver.pageChanged(to: page)
         self.messagesProcessor.processMessage(withName: messageName, userInfo: userInfo)
@@ -20,20 +22,19 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     
     override func validateToolbarItem(in window: SFSafariWindow, validationHandler: @escaping ((Bool, String) -> Void)) {
         self.contextObserver.windowChanged(to: window)
-        self.commandsDispatcher.send(command: .exportVideos)
+        self.popoverViewModel.reset()
         validationHandler(true, "")
     }
     
     override func popoverViewController() -> SFSafariExtensionViewController {
-        return SafariExtensionViewController.shared
+        let popoverViewController = SafariExtensionViewController(nibName: NSNib.Name(rawValue: "SafariExtensionViewController"), bundle: nil)
+        popoverViewController.viewModel = self.popoverViewModel
+        return popoverViewController
     }
 
     override func popoverWillShow(in window: SFSafariWindow) {
         self.contextObserver.windowChanged(to: window)
-        let viewModel = VideoItemsListViewModel()
-        viewModel.reload()
-        SafariExtensionViewController.shared.viewModel = viewModel
+        self.popoverViewModel.reload()
     }
 }
-
 
