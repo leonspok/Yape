@@ -13,7 +13,7 @@
                 <outlet property="scrollView" destination="t2o-vj-H2Q" id="jin-zf-NFR"/>
                 <outlet property="view" destination="c22-O7-iKe" id="vwT-Xx-Aiz"/>
                 <outlet property="zeroCaseLabel" destination="Uta-uW-ySP" id="ceY-gx-RAv"/>
-                <outlet property="zeroCaseView" destination="fvA-Mo-tld" id="OSn-VC-xH8"/>
+                <outlet property="zeroCaseView" destination="fvA-Mo-tld" id="FbI-m0-178"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
@@ -36,8 +36,8 @@
                                 </collectionViewFlowLayout>
                                 <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 <connections>
-                                    <outlet property="dataSource" destination="-2" id="DCy-ti-nyN"/>
-                                    <outlet property="delegate" destination="-2" id="rWf-qJ-a3d"/>
+                                    <outlet property="dataSource" destination="-2" id="whK-lb-5qf"/>
+                                    <outlet property="delegate" destination="-2" id="3UP-eY-Y1o"/>
                                 </connections>
                             </collectionView>
                         </subviews>

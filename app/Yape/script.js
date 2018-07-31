@@ -4,10 +4,12 @@
     const documentUID = guid()
 
     const observingConfig = { attributes: false, childList: true, characterData: false };
-    const observer = new MutationObserver(exportVideos)
+    const observer = new MutationObserver(exportVideosIfNeeded)
     observer.observe(document, observingConfig)
 
     safari.self.addEventListener("message", handleMessage)
+
+    var videosFoundAtLeastOnce = false
 
     // MARK: - Messaging -
 
@@ -47,11 +49,11 @@
     // MARK: - Request Handlers -
 
     function getVideosRequestHandler(params) {
-        exportVideos()
+        exportVideosIfNeeded()
     }
 
-    function exportVideos() {
-        const videos = getWebpageVideos()
+    function exportVideos(forced) {
+    	const videos = getWebpageVideos()
         let items = []
         for (let i = 0; i < videos.length; i++) {
             let video = videos[i]
@@ -69,7 +71,16 @@
         let info = {
             "videos": items
         }
-        sendMessage("videos_list", info)
+        if (items.length > 0 || forced) {
+        	if (items.length > 0) {
+        		videosFoundAtLeastOnce = true
+        	}
+        	sendMessage("videos_list", info)
+        }
+    }
+
+    function exportVideosIfNeeded() {
+        exportVideos(videosFoundAtLeastOnce)
     }
 
     function highlightVideoRequestHandler(params) {
@@ -124,12 +135,10 @@
             if (element.getAttribute("data-yape-uuid") == undefined) {
                 element.setAttribute("data-yape-uuid", guid())
                 
-                element.addEventListener("canplay", exportVideos, { "passive": true })
-                element.addEventListener("play", exportVideos, { "passive": true })
-                element.addEventListener("pause", exportVideos, { "passive": true })
-                element.addEventListener("durationchange", exportVideos, { "passive": true })
-                element.addEventListener("canplay", exportVideos, { "passive": true })
-                element.addEventListener("loadedmetadata", exportVideos, { "passive": true })
+                element.addEventListener("play", exportVideosIfNeeded, { "passive": true })
+                element.addEventListener("pause", exportVideosIfNeeded, { "passive": true })
+                element.addEventListener("durationchange", exportVideosIfNeeded, { "passive": true })
+                element.addEventListener("canplay", exportVideosIfNeeded, { "passive": true })
             }
             elementsToExport.push(element)
         }

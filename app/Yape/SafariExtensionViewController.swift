@@ -34,23 +34,17 @@ final class SafariExtensionViewController: SFSafariExtensionViewController, NSCo
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.wantsLayer = true
-        self.view.layer?.backgroundColor = NSColor.clear.cgColor
-        
         self.scrollView.backgroundColor = .clear
         self.collectionView.backgroundColors = [.clear]
         
         VideoItemView.registerCell(in: self.collectionView)
         VideoItemsListSectionHeaderView.registerSupplementaryView(in: self.collectionView)
-        self.updateData()
-    }
-    
-    override func viewDidDisappear() {
-        super.viewDidDisappear()
-        self.viewModel?.reset()
+        
+        self.applyViewModel()
     }
     
     private func applyViewModel() {
+        guard self.isViewLoaded else { return }
         guard let viewModel = self.viewModel else {
             self.updateData()
             return
@@ -67,6 +61,7 @@ final class SafariExtensionViewController: SFSafariExtensionViewController, NSCo
     }
     
     private func updateData() {
+        guard self.isViewLoaded else { return }
         if let viewModel = self.viewModel, viewModel.numberOfSections != 0 {
             let totalHeight: CGFloat = {
                 var sum: CGFloat = 0
@@ -164,8 +159,4 @@ final class SafariExtensionViewController: SFSafariExtensionViewController, NSCo
     @IBAction func reloadButtonPressed(_ sender: Any) {
         self.viewModel?.zeroCaseViewModel.buttonPressed()
     }
-}
-
-extension SafariExtensionViewController {
-    static let shared = SafariExtensionViewController(nibName: NSNib.Name(rawValue: "SafariExtensionViewController"), bundle: nil)
 }
