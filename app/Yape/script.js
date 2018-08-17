@@ -65,7 +65,13 @@
             } else {
                 item["title"] = "Video #" + (i + 1)
             }
-            item["duration"] = video.duration
+            if (video.duration != undefined &&
+                video.duration != null &&
+                video.duration != Number.POSITIVE_INFINITY &&
+                video.duration != Number.NEGATIVE_INFINITY &&
+                video.duration != Number.NaN) {
+                item["duration"] = video.duration
+            }
             items.push(item)
         }
         let info = {

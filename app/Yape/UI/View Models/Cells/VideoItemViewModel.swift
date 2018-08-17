@@ -40,7 +40,10 @@ final class VideoItemViewModel: VideoItemViewModelProtocol {
     }
     
     var duration: String {
-        return String(format: "%02d:%02d", Int(videoItem.duration) / 60, Int(videoItem.duration) % 60)
+        guard let duration = videoItem.duration else {
+            return ""
+        }
+        return String(format: "%02d:%02d", Int(duration) / 60, Int(duration) % 60)
     }
     
     func didStartHover() {
