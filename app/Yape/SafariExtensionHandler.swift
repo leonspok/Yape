@@ -27,7 +27,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     }
     
     override func popoverViewController() -> SFSafariExtensionViewController {
-        let popoverViewController = SafariExtensionViewController(nibName: NSNib.Name(rawValue: "SafariExtensionViewController"), bundle: nil)
+        let popoverViewController = SafariExtensionViewController(nibName: "SafariExtensionViewController", bundle: nil)
         popoverViewController.viewModel = self.popoverViewModel
         return popoverViewController
     }
