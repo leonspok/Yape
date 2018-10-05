@@ -32,7 +32,7 @@ protocol ReusableNibView: ReusableView {
 
 extension ReusableNibView {
     static var reusableNib: NSNib? {
-        return NSNib(nibNamed: NSNib.Name(rawValue: String(describing: self)),
+        return NSNib(nibNamed: String(describing: self),
                      bundle: Bundle(for: self))
     }
     
@@ -51,7 +51,7 @@ protocol ReusableSupplementaryView: ReusableView {
 
 extension ReusableSupplementaryView {
     static var supplementaryElementKind: NSCollectionView.SupplementaryElementKind {
-        return NSCollectionView.SupplementaryElementKind(String(describing: self))
+        return String(describing: self)
     }
     
     static func registerSupplementaryView(in collectionView: NSCollectionView) {

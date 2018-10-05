@@ -70,5 +70,5 @@ final class VideoItemsListSectionHeaderView: NSView {
 }
 
 extension VideoItemsListSectionHeaderView: ReusableSupplementaryView {
-    static let supplementaryElementKind: NSCollectionView.SupplementaryElementKind = .sectionHeader
+    static let supplementaryElementKind: NSCollectionView.SupplementaryElementKind = NSCollectionView.elementKindSectionHeader
 }

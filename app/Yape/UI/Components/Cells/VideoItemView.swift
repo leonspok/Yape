@@ -75,7 +75,7 @@ final class VideoItemView: NSCollectionViewItem, ReusableView {
     }()
     
     private lazy var revealButton: NSButton = {
-        let button = NSButton(image: NSImage(named: .revealFreestandingTemplate)!, target: self, action: #selector(revealButtonPressed(_:)))
+        let button = NSButton(image: NSImage(named: NSImage.revealFreestandingTemplateName)!, target: self, action: #selector(revealButtonPressed(_:)))
         button.isBordered = false
         return button
     }()
@@ -179,5 +179,5 @@ final class VideoItemView: NSCollectionViewItem, ReusableView {
 }
 
 fileprivate extension NSColor.Name {
-    static let hoverColor = NSColor.Name(rawValue: "video.items.list.hover.color")
+    static let hoverColor = "video.items.list.hover.color"
 }

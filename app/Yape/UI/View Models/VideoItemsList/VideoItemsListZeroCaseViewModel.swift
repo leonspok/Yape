@@ -23,7 +23,7 @@ final class VideoItemsListZeroCaseViewModel: VideoItemsListZeroCaseViewModelProt
     
     init(text: String = VideoItemsListZeroCaseViewModel.defaultText,
          buttonTitle: String = VideoItemsListZeroCaseViewModel.defaultButtonTitle,
-         buttonImage: NSImage? = NSImage(named: .refreshTemplate),
+         buttonImage: NSImage? = NSImage(named: NSImage.refreshTemplateName),
          onButtonPressed: VoidClosure? = nil) {
         self.text = text
         self.buttonTitle = buttonTitle

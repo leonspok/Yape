@@ -117,7 +117,7 @@ final class SafariExtensionViewController: SFSafariExtensionViewController, NSCo
     }
     
     func collectionView(_ collectionView: NSCollectionView, viewForSupplementaryElementOfKind kind: NSCollectionView.SupplementaryElementKind, at indexPath: IndexPath) -> NSView {
-        guard kind == .sectionHeader,
+        guard kind == NSCollectionView.elementKindSectionHeader,
             let view = VideoItemsListSectionHeaderView.dequeueSupplementaryView(in: collectionView, at: indexPath) else {
             return NSView()
         }
