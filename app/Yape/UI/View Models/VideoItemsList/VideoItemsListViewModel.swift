@@ -99,7 +99,7 @@ final class VideoItemsListViewModel: VideoItemsListViewModelProtocol {
         
         var hasUpdates = true
         var collections = self.collections
-        if let existingSectionIndex = collections.index(where: { $0.uid == collection.uid }) {
+        if let existingSectionIndex = collections.firstIndex(where: { $0.uid == collection.uid }) {
             collections.remove(at: existingSectionIndex)
             if !collection.videos.isEmpty {
                 collections.insert(collection, at: existingSectionIndex)

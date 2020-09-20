@@ -23,8 +23,8 @@ extension VideoItem: Equatable {
 }
 
 extension VideoItem: Hashable {
-    var hashValue: Int {
-        return self.uid.hashValue
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(self.uid.hashValue)
     }
 }
 
