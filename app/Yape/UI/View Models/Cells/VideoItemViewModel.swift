@@ -7,16 +7,19 @@
 //
 
 import Foundation
+import AppKit
 
 protocol VideoItemViewModelProtocol: AnyObject {
     var isPlaying: Bool { get }
     var title: String { get }
-    var duration: String { get }
+    var duration: String? { get }
+    var hasURL: Bool { get }
     var isLastInSection: Bool { get }
     
     func didStartHover()
     func didFinishHover()
     func didSelect()
+    func didPressCopyURL()
     func didPressFullscreen()
     func didPressReveal()
 }
@@ -45,11 +48,15 @@ final class VideoItemViewModel: VideoItemViewModelProtocol {
         return self.videoItem.title
     }
     
-    var duration: String {
-        guard let duration = videoItem.duration else {
-            return ""
+    var duration: String? {
+        guard let duration = self.videoItem.duration else {
+            return nil
         }
         return String(format: "%02d:%02d", Int(duration) / 60, Int(duration) % 60)
+    }
+    
+    var hasURL: Bool {
+        return self.videoItem.url != nil
     }
     
     func didStartHover() {
@@ -64,6 +71,12 @@ final class VideoItemViewModel: VideoItemViewModelProtocol {
     func didSelect() {
         let command: ExtensionCommand = .enablePiP(videoId: self.videoItem.uid)
         self.dependencies.commandsDispatcher.send(command: command)
+    }
+    
+    func didPressCopyURL() {
+        guard let url = self.videoItem.url else { return }
+        NSPasteboard.general.declareTypes([.URL], owner: nil)
+        NSPasteboard.general.setString(url.absoluteString, forType: .URL)
     }
     
     func didPressFullscreen() {

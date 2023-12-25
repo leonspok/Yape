@@ -53,15 +53,22 @@ fileprivate extension VideoItemsCollection {
         self.title = {
             if let host = URL(string: documentMessage.documentInfo.location)?.host {
                 if let title = documentMessage.documentInfo.title, title.count > 0 {
-                    return "[\(host)] " + title
+                    return "[\(host.removingWWW())] " + title
                 }
-                return "[\(host)]"
+                return "[\(host.removingWWW())]"
             } else {
                 let location = documentMessage.documentInfo.location
-                let truncated = location.prefix(min(location.count, 30))
-                return "[\(truncated)]"
+                let truncated = String(location.prefix(min(location.count, 30)))
+                return "[\(truncated.removingWWW())]"
             }
         }()
         self.videos = documentMessage.messageInfo.items
+    }
+}
+
+private extension String {
+    func removingWWW() -> String {
+        guard self.hasPrefix("www.") else { return self }
+        return self.replacing("www.", with: "", maxReplacements: 1)
     }
 }

@@ -11,9 +11,14 @@ import Foundation
 struct VideoItem {
     typealias Identifier = GenericIdentifier<VideoItem>
     let uid: Identifier
+    let src: String?
     let title: String
     let isPlaying: Bool
     let duration: TimeInterval?
+    
+    var url: URL? {
+        return self.src.flatMap(URL.init(string:))
+    }
 }
 
 extension VideoItem: Equatable {
@@ -36,6 +41,7 @@ extension VideoItem: DictionaryRepresentable {
             return nil
         }
         self.uid = Identifier(rawValue: uidString)
+        self.src = dictionary[.src] as? String
         self.title = title
         self.isPlaying = isPlaying
         self.duration = dictionary[.duration] as? TimeInterval
@@ -57,6 +63,7 @@ extension VideoItem: DictionaryRepresentable {
 
 fileprivate extension String {
     static let uid = "uid"
+    static let src = "src"
     static let title = "title"
     static let isPlaying = "is_playing"
     static let duration = "duration"

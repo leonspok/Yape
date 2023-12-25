@@ -80,6 +80,12 @@ final class VideoItemView: NSCollectionViewItem, ReusableView {
         return textField
     }()
     
+    private lazy var copyURLButton: NSButton = {
+        let button = NSButton(image: NSImage(systemSymbolName: "link.circle.fill", accessibilityDescription: nil)!, target: self, action: #selector(copyURLButtonPressed(_:)))
+        button.isBordered = false
+        return button
+    }()
+    
     private lazy var fullscreenButton: NSButton = {
         let button = NSButton(image: NSImage(systemSymbolName: "arrow.up.left.and.arrow.down.right.circle.fill", accessibilityDescription: nil)!, target: self, action: #selector(fullscreenButtonPressed(_:)))
         button.isBordered = false
@@ -145,6 +151,10 @@ final class VideoItemView: NSCollectionViewItem, ReusableView {
         self.durationLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
         self.stackView.addArrangedSubview(self.durationLabel)
         
+        self.copyURLButton.translatesAutoresizingMaskIntoConstraints = false
+        self.copyURLButton.setContentCompressionResistancePriority(.required, for: .horizontal)
+        self.stackView.addArrangedSubview(self.copyURLButton)
+        
         self.fullscreenButton.translatesAutoresizingMaskIntoConstraints = false
         self.fullscreenButton.setContentCompressionResistancePriority(.required, for: .horizontal)
         self.stackView.addArrangedSubview(self.fullscreenButton)
@@ -172,6 +182,7 @@ final class VideoItemView: NSCollectionViewItem, ReusableView {
             self.durationLabel.stringValue = ""
             return
         }
+        
         if viewModel.isPlaying {
             self.iconImageView.setSymbolImage(NSImage(systemSymbolName: "pause.rectangle.fill", accessibilityDescription: nil)!, contentTransition: .automatic)
             self.iconImageView.addSymbolEffect(.pulse, options: .repeating)
@@ -179,9 +190,19 @@ final class VideoItemView: NSCollectionViewItem, ReusableView {
             self.iconImageView.setSymbolImage(NSImage(systemSymbolName: "play.rectangle.fill", accessibilityDescription: nil)!, contentTransition: .automatic)
             self.iconImageView.removeAllSymbolEffects()
         }
+        
         self.titleView.stringValue = viewModel.title
-        self.durationLabel.stringValue = viewModel.duration
         self.separatorView.isHidden = viewModel.isLastInSection
+        
+        if let duration = viewModel.duration {
+            self.durationLabel.stringValue = duration
+            self.durationLabel.isHidden = false
+        } else {
+            self.durationLabel.stringValue = ""
+            self.durationLabel.isHidden = true
+        }
+        
+        self.copyURLButton.isHidden = !(self.viewModel?.hasURL == true)
     }
     
     // MARK: Mouse events
@@ -208,6 +229,11 @@ final class VideoItemView: NSCollectionViewItem, ReusableView {
     @objc
     private func fullscreenButtonPressed(_ sender: NSButton) {
         self.viewModel?.didPressFullscreen()
+    }
+    
+    @objc
+    private func copyURLButtonPressed(_ sender: NSButton) {
+        self.viewModel?.didPressCopyURL()
     }
 }
 

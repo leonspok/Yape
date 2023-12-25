@@ -60,6 +60,7 @@
             let video = videos[i]
             let item = {};
             item["uid"] = video.getAttribute("data-yape-uuid")
+            item["src"] = video.currentSrc
             item["is_playing"] = !video.paused
             if (video.title != undefined && video.title.length > 0) {
                 item["title"] = video.title
