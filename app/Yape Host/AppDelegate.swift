@@ -13,11 +13,10 @@ import AppKit
 class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            let notification = NSUserNotification()
-            notification.title = NSLocalizedString("notification.extension.installed.text", comment: "Extension installed")
-            notification.informativeText = NSLocalizedString("notification.extension.installed.informative.text", comment: "Please, enable it in Safari")
-            notification.hasActionButton = false
-            NSUserNotificationCenter.default.deliver(notification)
+            let alert = NSAlert()
+            alert.messageText = NSLocalizedString("notification.extension.installed.text", comment: "Extension installed")
+            alert.informativeText = NSLocalizedString("notification.extension.installed.informative.text", comment: "Please, enable it in Safari")
+            alert.runModal()
         }
         
         #if DEBUG
