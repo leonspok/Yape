@@ -14,6 +14,7 @@ enum ExtensionCommand {
     case removeHighlight
     case scrollToVideo(videoId: VideoItem.Identifier)
     case enablePiP(videoId: VideoItem.Identifier)
+    case moveFullscreen(videoId: VideoItem.Identifier)
 }
 
 extension ExtensionCommand {
@@ -29,6 +30,8 @@ extension ExtensionCommand {
             return "remove_highlight"
         case .enablePiP:
             return "enable_pip"
+        case .moveFullscreen:
+            return "move_fullscreen"
         }
     }
     
@@ -43,6 +46,8 @@ extension ExtensionCommand {
         case .scrollToVideo(let videoId):
             return [.uid: videoId.rawValue]
         case .enablePiP(let videoId):
+            return [.uid: videoId.rawValue]
+        case .moveFullscreen(let videoId):
             return [.uid: videoId.rawValue]
         }
     }

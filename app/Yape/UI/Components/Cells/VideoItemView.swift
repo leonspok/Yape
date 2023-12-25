@@ -80,6 +80,12 @@ final class VideoItemView: NSCollectionViewItem, ReusableView {
         return textField
     }()
     
+    private lazy var fullscreenButton: NSButton = {
+        let button = NSButton(image: NSImage(systemSymbolName: "arrow.up.left.and.arrow.down.right.circle.fill", accessibilityDescription: nil)!, target: self, action: #selector(fullscreenButtonPressed(_:)))
+        button.isBordered = false
+        return button
+    }()
+    
     private lazy var revealButton: NSButton = {
         let button = NSButton(image: NSImage(systemSymbolName: "magnifyingglass.circle.fill", accessibilityDescription: nil)!, target: self, action: #selector(revealButtonPressed(_:)))
         button.isBordered = false
@@ -139,6 +145,10 @@ final class VideoItemView: NSCollectionViewItem, ReusableView {
         self.durationLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
         self.stackView.addArrangedSubview(self.durationLabel)
         
+        self.fullscreenButton.translatesAutoresizingMaskIntoConstraints = false
+        self.fullscreenButton.setContentCompressionResistancePriority(.required, for: .horizontal)
+        self.stackView.addArrangedSubview(self.fullscreenButton)
+        
         self.revealButton.translatesAutoresizingMaskIntoConstraints = false
         self.revealButton.setContentCompressionResistancePriority(.required, for: .horizontal)
         self.stackView.addArrangedSubview(self.revealButton)
@@ -193,6 +203,11 @@ final class VideoItemView: NSCollectionViewItem, ReusableView {
     @objc
     private func revealButtonPressed(_ sender: NSButton) {
         self.viewModel?.didPressReveal()
+    }
+    
+    @objc
+    private func fullscreenButtonPressed(_ sender: NSButton) {
+        self.viewModel?.didPressFullscreen()
     }
 }
 

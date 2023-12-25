@@ -17,6 +17,7 @@ protocol VideoItemViewModelProtocol: AnyObject {
     func didStartHover()
     func didFinishHover()
     func didSelect()
+    func didPressFullscreen()
     func didPressReveal()
 }
 
@@ -62,6 +63,11 @@ final class VideoItemViewModel: VideoItemViewModelProtocol {
     
     func didSelect() {
         let command: ExtensionCommand = .enablePiP(videoId: self.videoItem.uid)
+        self.dependencies.commandsDispatcher.send(command: command)
+    }
+    
+    func didPressFullscreen() {
+        let command: ExtensionCommand = .moveFullscreen(videoId: self.videoItem.uid)
         self.dependencies.commandsDispatcher.send(command: command)
     }
     

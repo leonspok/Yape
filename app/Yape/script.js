@@ -19,7 +19,8 @@
             "highlight_video": highlightVideoRequestHandler,
             "remove_highlight": removeHighlightRequestHandler,
             "scroll_to_video": scrollToVideoRequestHandler,
-            "enable_pip": enablePiPRequestHandler
+            "enable_pip": enablePiPRequestHandler,
+            "move_fullscreen": fullscreenRequestHandler,
         }
         
         const messageName = event.name
@@ -114,6 +115,13 @@
             enablePiP(video)
         }
     }
+    
+    function fullscreenRequestHandler(params) {
+        const video = getVideo(params["uid"])
+        if (video != null) {
+            fullscreen(video)
+        }
+    }
 
     // MARK: - Page Actions -
 
@@ -153,6 +161,10 @@
 
     function enablePiP(video) {
         video.webkitSetPresentationMode("picture-in-picture")
+    }
+    
+    function fullscreen(video) {
+        video.requestFullscreen()
     }
 
     function highlightElement(element) {
