@@ -11,7 +11,7 @@ import SafariServices
 
 final class SafariExtensionViewController: SFSafariExtensionViewController, NSCollectionViewDataSource, NSCollectionViewDelegateFlowLayout {
     private struct Constants {
-        static let listWidth: CGFloat = 250
+        static let listWidth: CGFloat = 320
         static let maxListHeight: CGFloat = 400
         static let sectionHeaderHeight: CGFloat = 20
         static let cellHeight: CGFloat = 30

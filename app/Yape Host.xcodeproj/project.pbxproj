@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,11 +13,9 @@
 		E342894C2103D4CF00BFD5CB /* SafariExtensionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E342894A2103D4CF00BFD5CB /* SafariExtensionViewController.xib */; };
 		E342894F2103D4CF00BFD5CB /* script.js in Resources */ = {isa = PBXBuildFile; fileRef = E342894E2103D4CF00BFD5CB /* script.js */; };
 		E34289512103D4CF00BFD5CB /* ToolbarItemIcon.pdf in Resources */ = {isa = PBXBuildFile; fileRef = E34289502103D4CF00BFD5CB /* ToolbarItemIcon.pdf */; };
-		E34289552103D4CF00BFD5CB /* Yape.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E34289412103D4CF00BFD5CB /* Yape.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		E34289552103D4CF00BFD5CB /* Yape.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = E34289412103D4CF00BFD5CB /* Yape.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E391758D2103F0390075F5D8 /* VideoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E391758C2103F0390075F5D8 /* VideoItem.swift */; };
 		E39175902103F1340075F5D8 /* GenericIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E391758F2103F1340075F5D8 /* GenericIdentifier.swift */; };
-		E391759D2104BBFB0075F5D8 /* Cancellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E391759C2104BBFB0075F5D8 /* Cancellable.swift */; };
-		E39175A22104BE7F0075F5D8 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39175A12104BE7F0075F5D8 /* Result.swift */; };
 		E39175A42104C00F0075F5D8 /* ExecutionContextFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39175A32104C00F0075F5D8 /* ExecutionContextFactory.swift */; };
 		E39175A72104C2320075F5D8 /* ExecutionMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39175A62104C2320075F5D8 /* ExecutionMode.swift */; };
 		E39175A92104C24A0075F5D8 /* ExecutionContextProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39175A82104C24A0075F5D8 /* ExecutionContextProtocol.swift */; };
@@ -71,15 +69,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		E34289592103D4CF00BFD5CB /* Embed App Extensions */ = {
+		E34289592103D4CF00BFD5CB /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				E34289552103D4CF00BFD5CB /* Yape.appex in Embed App Extensions */,
+				E34289552103D4CF00BFD5CB /* Yape.appex in Embed Foundation Extensions */,
 			);
-			name = "Embed App Extensions";
+			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -96,8 +94,6 @@
 		E34289522103D4CF00BFD5CB /* Yape.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Yape.entitlements; sourceTree = "<group>"; };
 		E391758C2103F0390075F5D8 /* VideoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoItem.swift; sourceTree = "<group>"; };
 		E391758F2103F1340075F5D8 /* GenericIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericIdentifier.swift; sourceTree = "<group>"; };
-		E391759C2104BBFB0075F5D8 /* Cancellable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cancellable.swift; sourceTree = "<group>"; };
-		E39175A12104BE7F0075F5D8 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		E39175A32104C00F0075F5D8 /* ExecutionContextFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExecutionContextFactory.swift; sourceTree = "<group>"; };
 		E39175A62104C2320075F5D8 /* ExecutionMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExecutionMode.swift; sourceTree = "<group>"; };
 		E39175A82104C24A0075F5D8 /* ExecutionContextProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExecutionContextProtocol.swift; sourceTree = "<group>"; };
@@ -198,8 +194,6 @@
 				E39175A52104C21D0075F5D8 /* Execution Context */,
 				E39175D3210521BB0075F5D8 /* Observable.swift */,
 				E391758F2103F1340075F5D8 /* GenericIdentifier.swift */,
-				E391759C2104BBFB0075F5D8 /* Cancellable.swift */,
-				E39175A12104BE7F0075F5D8 /* Result.swift */,
 				E39175AE2104CB520075F5D8 /* CommonTypes.swift */,
 				E391762F210DE1320075F5D8 /* DictionaryRepresentable.swift */,
 				E391763D210E0A280075F5D8 /* DebugLog.swift */,
@@ -403,7 +397,7 @@
 				E3C7338E2103D49F004D0FCC /* Sources */,
 				E3C7338F2103D49F004D0FCC /* Frameworks */,
 				E3C733902103D49F004D0FCC /* Resources */,
-				E34289592103D4CF00BFD5CB /* Embed App Extensions */,
+				E34289592103D4CF00BFD5CB /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
@@ -421,8 +415,9 @@
 		E3C7338A2103D49F004D0FCC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 0940;
-				LastUpgradeCheck = 1200;
+				LastUpgradeCheck = 1510;
 				ORGANIZATIONNAME = "Igor Savelev";
 				TargetAttributes = {
 					E34289402103D4CF00BFD5CB = {
@@ -489,7 +484,6 @@
 				E3917646210E448D0075F5D8 /* VideoItemsCollection.swift in Sources */,
 				E3917642210E323D0075F5D8 /* VideoItemsListSectionHeaderView.swift in Sources */,
 				E3917630210DE1320075F5D8 /* DictionaryRepresentable.swift in Sources */,
-				E391759D2104BBFB0075F5D8 /* Cancellable.swift in Sources */,
 				E3917621210D117E0075F5D8 /* ExtensionCommand.swift in Sources */,
 				E39175CA210511C10075F5D8 /* VideoItemViewModel.swift in Sources */,
 				E391763E210E0A280075F5D8 /* DebugLog.swift in Sources */,
@@ -502,7 +496,6 @@
 				E3917644210E353C0075F5D8 /* VideoItemsListZeroCaseViewModel.swift in Sources */,
 				E391761D210D11350075F5D8 /* ExtensionMessagesProcessorProtocol.swift in Sources */,
 				E39175A72104C2320075F5D8 /* ExecutionMode.swift in Sources */,
-				E39175A22104BE7F0075F5D8 /* Result.swift in Sources */,
 				E391762C210D16B50075F5D8 /* DocumentMessage.swift in Sources */,
 				E39175A42104C00F0075F5D8 /* ExecutionContextFactory.swift in Sources */,
 				E39175D22105201B0075F5D8 /* VideoItemsListViewModel.swift in Sources */,
@@ -571,14 +564,16 @@
 				CODE_SIGN_ENTITLEMENTS = Yape/Yape.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 6KXZX3AW22;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = Yape/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.leonspok.osx.Yape-Host.Yape";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -592,14 +587,16 @@
 				CODE_SIGN_ENTITLEMENTS = Yape/Yape.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 6KXZX3AW22;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = Yape/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.leonspok.osx.Yape-Host.Yape";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -642,9 +639,11 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -659,7 +658,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -704,9 +703,11 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -715,7 +716,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -733,13 +734,17 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 20230101;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 6KXZX3AW22;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "Yape Host/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 2023.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.leonspok.osx.Yape-Host";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -755,13 +760,17 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 20230101;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 6KXZX3AW22;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "Yape Host/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 2023.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.leonspok.osx.Yape-Host";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

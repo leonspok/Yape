@@ -48,6 +48,12 @@ final class VideoItemView: NSCollectionViewItem, ReusableView {
         return view
     }()
     
+    private lazy var iconImageView: NSImageView = {
+        let view = NSImageView()
+        view.imageFrameStyle = .none
+        return view
+    }()
+    
     private lazy var titleView: NSTextField =  {
         let textField = NSTextField(frame: .zero)
         textField.isEditable = false
@@ -75,7 +81,7 @@ final class VideoItemView: NSCollectionViewItem, ReusableView {
     }()
     
     private lazy var revealButton: NSButton = {
-        let button = NSButton(image: NSImage(named: NSImage.revealFreestandingTemplateName)!, target: self, action: #selector(revealButtonPressed(_:)))
+        let button = NSButton(image: NSImage(systemSymbolName: "magnifyingglass.circle.fill", accessibilityDescription: nil)!, target: self, action: #selector(revealButtonPressed(_:)))
         button.isBordered = false
         return button
     }()
@@ -121,6 +127,10 @@ final class VideoItemView: NSCollectionViewItem, ReusableView {
             self.stackView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
         ])
         
+        self.iconImageView.translatesAutoresizingMaskIntoConstraints = false
+        self.iconImageView.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        self.stackView.addArrangedSubview(self.iconImageView)
+        
         self.titleView.translatesAutoresizingMaskIntoConstraints = false
         self.titleView.setContentHuggingPriority(.defaultLow, for: .horizontal)
         self.stackView.addArrangedSubview(self.titleView)
@@ -147,9 +157,17 @@ final class VideoItemView: NSCollectionViewItem, ReusableView {
     
     private func applyViewModel() {
         guard let viewModel = self.viewModel else {
+            self.iconImageView.image = nil
             self.titleView.stringValue = ""
             self.durationLabel.stringValue = ""
             return
+        }
+        if viewModel.isPlaying {
+            self.iconImageView.setSymbolImage(NSImage(systemSymbolName: "pause.rectangle.fill", accessibilityDescription: nil)!, contentTransition: .automatic)
+            self.iconImageView.addSymbolEffect(.pulse, options: .repeating)
+        } else {
+            self.iconImageView.setSymbolImage(NSImage(systemSymbolName: "play.rectangle.fill", accessibilityDescription: nil)!, contentTransition: .automatic)
+            self.iconImageView.removeAllSymbolEffects()
         }
         self.titleView.stringValue = viewModel.title
         self.durationLabel.stringValue = viewModel.duration

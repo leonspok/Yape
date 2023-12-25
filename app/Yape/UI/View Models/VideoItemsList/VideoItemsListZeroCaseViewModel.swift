@@ -8,7 +8,7 @@
 
 import AppKit
 
-protocol VideoItemsListZeroCaseViewModelProtocol: class {
+protocol VideoItemsListZeroCaseViewModelProtocol: AnyObject {
     var text: String { get }
     var buttonTitle: String { get }
     var buttonImage: NSImage? { get }

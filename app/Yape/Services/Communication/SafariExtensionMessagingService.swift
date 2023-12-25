@@ -99,6 +99,6 @@ final class SafariExtensionMessagingService: ExtensionMessagesProcessorProtocol,
     }
 }
 
-fileprivate protocol RawMessageHandlerProtocol: class {
+fileprivate protocol RawMessageHandlerProtocol: AnyObject {
     func handle(messageInfo: [String: Any])
 }

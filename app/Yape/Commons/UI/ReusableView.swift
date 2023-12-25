@@ -8,7 +8,7 @@
 
 import AppKit
 
-protocol ReusableView: class {
+protocol ReusableView: AnyObject {
     static var reusableIdentifier: NSUserInterfaceItemIdentifier { get }
 }
 

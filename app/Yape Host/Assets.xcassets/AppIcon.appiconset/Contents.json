@@ -1,68 +1,68 @@
 {
   "images" : [
     {
-      "size" : "16x16",
-      "idiom" : "mac",
       "filename" : "Artboard@16pt.png",
-      "scale" : "1x"
+      "idiom" : "mac",
+      "scale" : "1x",
+      "size" : "16x16"
     },
     {
-      "size" : "16x16",
-      "idiom" : "mac",
       "filename" : "Artboard@32pt.png",
-      "scale" : "2x"
+      "idiom" : "mac",
+      "scale" : "2x",
+      "size" : "16x16"
     },
     {
-      "size" : "32x32",
+      "filename" : "Artboard@32pt 1.png",
       "idiom" : "mac",
-      "filename" : "Artboard@32pt-1.png",
-      "scale" : "1x"
+      "scale" : "1x",
+      "size" : "32x32"
     },
     {
-      "size" : "32x32",
-      "idiom" : "mac",
       "filename" : "Artboard@64pt.png",
-      "scale" : "2x"
+      "idiom" : "mac",
+      "scale" : "2x",
+      "size" : "32x32"
     },
     {
-      "size" : "128x128",
-      "idiom" : "mac",
       "filename" : "Artboard@128pt.png",
-      "scale" : "1x"
+      "idiom" : "mac",
+      "scale" : "1x",
+      "size" : "128x128"
     },
     {
-      "size" : "128x128",
-      "idiom" : "mac",
       "filename" : "Artboard@256pt.png",
-      "scale" : "2x"
+      "idiom" : "mac",
+      "scale" : "2x",
+      "size" : "128x128"
     },
     {
-      "size" : "256x256",
+      "filename" : "Artboard@256pt 1.png",
       "idiom" : "mac",
-      "filename" : "Artboard@256pt-1.png",
-      "scale" : "1x"
+      "scale" : "1x",
+      "size" : "256x256"
     },
     {
-      "size" : "256x256",
-      "idiom" : "mac",
       "filename" : "Artboard@512pt.png",
-      "scale" : "2x"
+      "idiom" : "mac",
+      "scale" : "2x",
+      "size" : "256x256"
     },
     {
-      "size" : "512x512",
+      "filename" : "Artboard@512pt 1.png",
       "idiom" : "mac",
-      "filename" : "Artboard@512pt-1.png",
-      "scale" : "1x"
+      "scale" : "1x",
+      "size" : "512x512"
     },
     {
-      "size" : "512x512",
-      "idiom" : "mac",
       "filename" : "Artboard@1024pt.png",
-      "scale" : "2x"
+      "idiom" : "mac",
+      "scale" : "2x",
+      "size" : "512x512"
     }
   ],
   "info" : {
-    "version" : 1,
-    "author" : "xcode"
+    "author" : "xcode",
+    "version" : 1
   }
 }

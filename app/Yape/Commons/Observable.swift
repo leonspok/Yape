@@ -23,7 +23,7 @@ final class ObserveToken<T> {
 }
 
 final class Observable<T> {
-    private final class WeakHolder<T> {
+    private final class WeakHolder {
         fileprivate weak var observer: ObserveToken<T>? = nil
         
         init(_ observer: ObserveToken<T>) {
@@ -31,7 +31,7 @@ final class Observable<T> {
         }
     }
     
-    private var observers: [WeakHolder<T>] = []
+    private var observers: [WeakHolder] = []
     
     var value: T {
         willSet {

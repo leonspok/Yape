@@ -8,7 +8,7 @@
 
 import AppKit
 
-final class VideoItemsListSectionHeaderView: NSView {
+final class VideoItemsListSectionHeaderView: NSVisualEffectView {
     private struct Constants {
         static let titleViewSidePadding: CGFloat = 15
     }
@@ -46,8 +46,8 @@ final class VideoItemsListSectionHeaderView: NSView {
     // MARK: Setup view
     
     private func setupView() {
-        self.wantsLayer = true
-        self.layer?.backgroundColor = NSColor.headerColor.withAlphaComponent(0.1).cgColor
+        self.material = .titlebar
+        self.blendingMode = .behindWindow
         
         self.addSubview(self.titleView)
         self.titleView.translatesAutoresizingMaskIntoConstraints = false

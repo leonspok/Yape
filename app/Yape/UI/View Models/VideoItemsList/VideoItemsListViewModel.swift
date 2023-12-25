@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol VideoItemsListViewModelProtocol: class {
+protocol VideoItemsListViewModelProtocol: AnyObject {
     var zeroCaseViewModel: VideoItemsListZeroCaseViewModelProtocol { get }
     
     var onUpdate: VoidClosure? { get set }

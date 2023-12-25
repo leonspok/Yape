@@ -8,7 +8,8 @@
 
 import Foundation
 
-protocol VideoItemViewModelProtocol: class {
+protocol VideoItemViewModelProtocol: AnyObject {
+    var isPlaying: Bool { get }
     var title: String { get }
     var duration: String { get }
     var isLastInSection: Bool { get }
@@ -35,8 +36,12 @@ final class VideoItemViewModel: VideoItemViewModelProtocol {
     
     var isLastInSection: Bool = false
     
+    var isPlaying: Bool {
+        return self.videoItem.isPlaying
+    }
+    
     var title: String {
-        return (self.videoItem.isPlaying ? "⏸ " : "▶️ ") + self.videoItem.title
+        return self.videoItem.title
     }
     
     var duration: String {
